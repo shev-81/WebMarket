@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.shev.com/spring/ws/products"
+        targetNamespace="http://www.shev.com/spring/ws/products" elementFormDefault="qualified">
+
+    <xs:element name="getProductByNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllProductsRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getProductByNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="product" type="tns:productSoap"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllProductsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="products" maxOccurs="unbounded" type="tns:productSoap"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="productSoap">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="price" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

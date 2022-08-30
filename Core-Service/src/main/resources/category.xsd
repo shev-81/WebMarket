@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.shev.com/spring/ws/categories"
+        xmlns:st="http://www.shev.com/spring/ws/products"
+        targetNamespace="http://www.shev.com/spring/ws/categories" elementFormDefault="qualified">
+
+    <xs:import schemaLocation="products.xsd" namespace="http://www.shev.com/spring/ws/products"/>
+
+    <xs:element name="getCategoryByTitleRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCategoryByTitleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="category" type="tns:categorySoap"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="categorySoap">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="productSoap" maxOccurs="unbounded" type="st:productSoap"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
