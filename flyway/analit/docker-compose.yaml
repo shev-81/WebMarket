@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  mysqldb:
+    image: mysql:8.0
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: analityc
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: pass
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+
+
