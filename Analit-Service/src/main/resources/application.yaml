@@ -1,0 +1,21 @@
+server:
+  port: 8111
+  servlet:
+    context-path: /web-market-analit
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/analityc
+    username: root
+    password: pass
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+jwt:
+  secret: h4f8093h4f983yhrt9834hr0934hf0hf493g493gf438rh438th34g34g
+  lifetime: 36000000
+integrations:
+  cart-service:
+    url: http://localhost:5555/cart
