@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 import webmarket.core.ProductDto;
-import webmarket.statistics.StatisticDto;
+import webmarket.analitic.StatisticDto;
 
 import java.util.ArrayList;
 import java.util.List;

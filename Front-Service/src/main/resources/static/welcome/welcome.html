@@ -1,0 +1,19 @@
+<div>
+    <p></p>
+    <h3>Часто покупаемые товары</h3>
+    <p></p>
+    <div class="col-sm-6 col-md-10">
+        <table class="table table-hover" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>Название</td>
+                <td>Колличество запросов</td>
+            </tr>
+            <tbody>
+            <tr ng-repeat="p in ProductList">
+                <td>{{p.nameProduct}}</td>
+                <td>{{p.count}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

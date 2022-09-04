@@ -1,0 +1,50 @@
+<div ng-show="isCartHaveItems(cart.totalPrice)">
+    <p></p>
+    <h3>Корзина</h3>
+    <table class="table table-hover">
+        <tr>
+            <td>Название товара</td>
+            <td>Количество</td>
+            <td>Цена за шт.</td>
+        </tr>
+        <tbody>
+        <tr ng-repeat="item in cart.items">
+            <td><b>{{item.productName}}</b></td>
+            <td>{{item.quantity}} шт.</td>
+            <td>{{item.price}} руб.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Итого</td>
+            <td><h4>{{cart.totalPrice}} руб.</h4></td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+        <button class="btn btn-secondary" ng-click="clearCart()">Очистить корзину</button>
+    </p>
+
+    <p></p>
+    <h3>Детали заказа</h3>
+    <form novalidate>
+        <input class="form-control" type="text" placeholder="Почтовый индекс" ng-model="orderDetails.postalcode">
+        <p></p>
+        <input class="form-control" type="text" placeholder="Город" ng-model="orderDetails.adminAreaTwoTown">
+        <p></p>
+        <input class="form-control" type="text" placeholder="Улица" ng-model="orderDetails.addressLineOneStreet">
+        <p></p>
+        <input class="form-control" type="text" placeholder="Номер апартаментов" ng-model="orderDetails.addressLineTwoApartmentNumber">
+        <p></p>
+        <input class="form-control" type="text" placeholder="Талефон" ng-model="orderDetails.phone">
+        <p></p>
+        <input class="form-control" type="text" placeholder="E-mail" ng-model="orderDetails.email">
+        <p></p>
+    </form>
+
+    <button class="btn btn-primary" ng-click="checkOut()" ng-show="isUserLoggedIn() && cart.items.length > 0">Оформить заказ</button>
+    <button class="btn btn-secondary" ng-click="disabledCheckOut()" ng-show="!isUserLoggedIn() && cart.items.length > 0">Оформить заказ</button>
+</div>
+<div ng-show="!isCartHaveItems(cart.totalPrice)">
+    <p></p>
+    <h3>Ваша корзина пуста.</h3>
+</div>

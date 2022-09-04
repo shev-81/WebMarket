@@ -1,4 +1,4 @@
-package webmarket.statistics;
+package webmarket.analitic;
 
 public class StatisticDto {
     private String nameProduct;

@@ -4,7 +4,7 @@ import com.webmarket.services.AnalitService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import webmarket.core.ProductDto;
-import webmarket.statistics.StatisticDto;
+import webmarket.analitic.StatisticDto;
 
 import java.util.ArrayList;
 import java.util.List;

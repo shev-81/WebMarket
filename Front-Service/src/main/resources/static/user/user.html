@@ -1,0 +1,38 @@
+<div>
+    <p></p>
+    <table class="table table-hover" ng-show="isUserLoggedIn()" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>ID</td>
+            <td>Имя</td>
+            <td>Роль</td>
+            <td>E-mail</td>
+            <td>Действие</td>
+        </tr>
+        <tbody>
+        <tr ng-repeat="u in usersList">
+            <td>{{u.id}}</td>
+            <td>{{u.name}}</td>
+            <td>{{u.roles}}</td>
+            <td>{{u.mail}}</td>
+            <td>
+                <button class="btn btn-danger" ng-click="deleteUser(u.id)">Удалить</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div ng-show="isUserLoggedIn()">
+        <h3>Завести нового пользователя:</h3>
+        <form novalidate ng-submit="createUser()">
+            <input class="form-control" type="text" placeholder="логин пользователя" ng-model="newUser.name">
+            <label>Логин пользователя</label>
+            <input class="form-control" type="password" ng-model="newUser.pass">
+            <label>Пароль</label>
+            <input class="form-control" type="text" placeholder="@mail" ng-model="newUser.mail">
+            <label>Е-майл</label>
+            <input class="form-control" type="text" placeholder="ROLE_USER" ng-model="newUser.roles">
+            <label>Роль</label>
+            <p></p>
+            <BUTTON class="btn btn-primary" type="submit">Создать пользователя</BUTTON>
+        </form>
+    </div>
+</div>

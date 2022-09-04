@@ -1,0 +1,36 @@
+<div ng-show="isOrdersHaveItems()">
+    <h3>Мои заказы</h3>
+    <table class="table table-hover">
+        <tr>
+            <td>ID</td>
+            <td>Адрес доставки</td>
+            <td>Стоимость</td>
+            <td></td>
+        </tr>
+        <tbody>
+        <tr ng-repeat="order in MyOrders">
+            <td><h3>{{order.id}}</h3></td>
+            <td> Кому: <b>{{order.fio}}</b>,<p></p>
+                Город: <b>{{order.adminAreaTwoTown}}</b>,<p></p>
+                Улица: <b>{{order.addressLineOneStreet}}</b>,<p></p>
+                Номер апартаментов: <b>{{order.addressLineTwoApartmentNumber}}</b>,<p></p>
+                Телефон: <b>{{order.adminAreaTwoTown}}</b>,<p></p>
+                E-mail: <b>{{order.email}}</b>,<p></p>
+
+            </td>
+            <td><h4>{{order.totalPrice}}</h4></td>
+            <td>
+                <button class="btn btn-primary" ng-click="goToPay(order.id)" ng-show="!isUserPay(order.status)">Оплатить</button>
+                <button class="btn btn-secondary" ng-click="disabledCheckOut()" ng-show="isUserPay(order.status)">Оплатить</button>
+                <p></p>
+                Заказ: <b style="color:green" ng-show="isUserPay(order.status)">Оплачен</b><b style="color:red" ng-show="!isUserPay(order.status)">Не оплачен</b>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div ng-show="!isOrdersHaveItems()">
+    <p></p>
+    <h3>У вас нет заказов.</h3>
+</div>
