@@ -1,6 +1,6 @@
 package com.webmarket.repositories;
 
-import com.example.spring.auth.entities.Role;
+import com.webmarket.entities.Role;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

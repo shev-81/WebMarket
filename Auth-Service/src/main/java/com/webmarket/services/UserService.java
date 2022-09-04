@@ -1,5 +1,9 @@
 package com.webmarket.services;
 
+import com.webmarket.entities.Role;
+import com.webmarket.entities.User;
+import com.webmarket.repositories.RoleRepository;
+import com.webmarket.repositories.UserRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

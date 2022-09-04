@@ -1,0 +1,59 @@
+
+
+
+#Для разворачивания Баз данных проекта нужно запустить файл - /flyway/start-migration.bat
+
+
+
+
+#version: '3'
+#
+#services:
+#  postgres-products:
+#    image: postgres:9.6
+#    domainname: products
+#    ports:
+#      - "5433:5432"
+#    environment:
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
+#    healthcheck:
+#      test: ["CMD", "pg_isready", "-q", "-U", "products"]
+#      interval: 5s
+#      timeout: 1s
+#      retries: 2
+#  flyway1:
+#    image: boxfuse/flyway
+#    command: -url=jdbc:postgresql://products:5432/postgres -schemas=public -user=postgres -password=postgres -connectRetries=30 migrate
+#    volumes:
+#      - ./flyway/products:/flyway/sql
+#    depends_on:
+#      - postgres-products
+#
+#  postgres-users:
+#    image: postgres:9.6
+#    domainname: users
+#    ports:
+#      - "5434:5432"
+#    environment:
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
+#    healthcheck:
+#      test: ["CMD", "pg_isready", "-q", "-U", "users"]
+#      interval: 5s
+#      timeout: 1s
+#      retries: 2
+#  flyway2:
+#    image: boxfuse/flyway
+#    command: -url=jdbc:postgresql://users:5432/postgres -schemas=public -user=postgres -password=postgres -connectRetries=30 migrate
+#    volumes:
+#      - ./flyway/users:/flyway/sql
+#    depends_on:
+#      - postgres-users
+#
+#  redis:
+#    image: 'bitnami/redis:latest'
+#    environment:
+#      - ALLOW_EMPTY_PASSWORD=yes
+#    ports:
+#      - "6379:6379"

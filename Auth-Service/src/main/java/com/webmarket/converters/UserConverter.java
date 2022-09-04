@@ -1,14 +1,14 @@
 package com.webmarket.converters;
 
-import com.example.spring.auth.UserDto;
-import com.example.spring.auth.entities.Role;
-import com.example.spring.auth.entities.User;
-import com.example.spring.auth.services.UserService;
+import com.webmarket.entities.Role;
+import com.webmarket.entities.User;
+import com.webmarket.services.UserService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import webmarket.auth.UserDto;
 
 import java.util.ArrayList;
 import java.util.List;

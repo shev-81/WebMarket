@@ -1,9 +1,13 @@
 package com.webmarket.controllers;
 
 
-import com.exemple.spring.exceptions.ResourceNotFoundException;
+import com.webmarket.converters.UserConverter;
+import com.webmarket.entities.User;
+import com.webmarket.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import webmarket.auth.UserDto;
+import webmarket.exceptions.ResourceNotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;

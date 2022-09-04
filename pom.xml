@@ -8,6 +8,7 @@
     <artifactId>WebMarket</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <name>WebMarket</name>
     <modules>
         <module>Core-Service</module>
         <module>Front-Service</module>
