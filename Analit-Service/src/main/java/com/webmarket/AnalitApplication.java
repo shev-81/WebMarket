@@ -5,6 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+/**
+ * Запрашивает данные у MS Core Service, и сохраняет их в БД MySQL. Данные запрашиваются каждые
+ * 10 секунд и содержат в себе названия продуктов, наиболее часто добавляемых в корзины
+ * покупателей. При загрузке стартовой страницы магазина, данные показываются в виде
+ * списка востребованных товаров.
+ */
 @EnableScheduling
 @ConditionalOnProperty(name = "scheduler.enabled", matchIfMissing = true)
 @SpringBootApplication
