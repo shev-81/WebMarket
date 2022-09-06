@@ -1,6 +1,5 @@
 package com.webmarket.services;
 
-
 import com.webmarket.entities.Statistic;
 import com.webmarket.repositories.AnalitRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Сервис регистрирует в репозитарии продукты которые добавляет пользователь.
+ * Если тип продукта уже есть в репозитарии то просто увеличивается его статистическое колличество.
+ * Сервис каждые 10 секунд опрашивает корзину и собирает из нее данные.
+ * @see AnalitRepository
+ * @see RestTemplate
+ */
 @Service
 @RequiredArgsConstructor
 public class AnalitService {

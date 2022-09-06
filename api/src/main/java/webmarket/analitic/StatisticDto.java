@@ -1,7 +1,18 @@
 package webmarket.analitic;
 
+/**
+ * DTO объект пересылаемый между сервисом статистики и сервисом корзины.
+ */
 public class StatisticDto {
+
+    /**
+     * Имя продукта.
+     */
     private String nameProduct;
+
+    /**
+     * Колличество взятое из корзины.
+     */
     private Integer count;
 
     public StatisticDto(String nameProduct, Integer count) {

@@ -11,6 +11,9 @@ import webmarket.exceptions.BadConnectionServiceException;
 
 import java.net.ConnectException;
 
+/**
+ * Перехватчик исключений. Оборачивает исключения в ResponseEntity<> с кодом ошибки.
+ */
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {

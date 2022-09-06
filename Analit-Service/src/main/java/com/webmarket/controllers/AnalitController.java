@@ -9,11 +9,17 @@ import webmarket.analitic.StatisticDto;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Контроллер Микросервиса доступен по адресу http://localhost:8111/web-market-analit/api/v1/analit
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/analit")
 public class AnalitController {
 
+    /**
+     * Сервис Аналитики.
+     */
     private final AnalitService analitService;
 
     @GetMapping

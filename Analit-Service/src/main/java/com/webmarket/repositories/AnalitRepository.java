@@ -8,8 +8,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Репозитарий для хранения статистики по самым востребованным товарам (добавляемым в корзину покупателями.)
+ */
 @Repository
 public interface AnalitRepository extends CrudRepository<Statistic, Integer> {
+
     @Query("select s from Statistic s")
     List<Statistic> getAll ();
 
