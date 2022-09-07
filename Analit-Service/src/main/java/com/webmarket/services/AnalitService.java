@@ -26,17 +26,30 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AnalitService {
 
+    /**
+     * Адресс сервиса корзины.
+     */
     @Value("${integrations.cart-service.url}")
     private String cartServiceUrl;
 
+    /**
+     * Репозитарий статистики.
+     */
     private final AnalitRepository analitRepository;
 
+    /**
+     * Клиент для запросов.
+     */
     private final RestTemplate restTemplate;
 
     public List<StatisticDto> getAll(){
         return analitRepository.getAll().stream().map(s-> (new StatisticDto(s.getNameProducts(), s.getCountVisits()))).collect(Collectors.toList());
     }
 
+    /**
+     * Регистрирует список продуктов, полученный от сервиса корзины, в базе данных.
+     * @param productDtoList
+     */
     @Transactional
     public void register(ArrayList<ProductDto> productDtoList){
         for(ProductDto product: productDtoList){
@@ -50,6 +63,10 @@ public class AnalitService {
         }
     }
 
+    /**
+     * Каждые 10 секунд посылает запрос в сервис корзин. Наличие запроса, по сути пинга воспринимается сервисом
+     * корзины как команда для формирования ответа и очищения своего временного списка востребованных товаров.
+     */
     @Scheduled(fixedDelay = 10000)
     public void requestData(){
         restTemplate.getForObject(cartServiceUrl + "/api/v1/cart/analit", Void.class);

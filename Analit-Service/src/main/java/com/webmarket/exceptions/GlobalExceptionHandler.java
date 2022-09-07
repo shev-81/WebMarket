@@ -12,18 +12,28 @@ import webmarket.exceptions.BadConnectionServiceException;
 import java.net.ConnectException;
 
 /**
- * Перехватчик исключений. Оборачивает исключения в ResponseEntity<> с кодом ошибки.
+ * ШГлобальный перехватчик исключений. Оборачивает исключения в ResponseEntity<> с кодом ошибки.
  */
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
 
+    /**
+     * Перехватчик исключения CHttpServerErrorException.InternalServerError.
+     * @param e
+     * @return
+     */
     @ExceptionHandler
     public ResponseEntity<BadConnectionServiceException> catchInternalServerError(HttpServerErrorException.InternalServerError e) {
         log.error(e.getMessage(), e);
         return new ResponseEntity<>(new BadConnectionServiceException("Сервис не работает"), HttpStatus.SERVICE_UNAVAILABLE);
     }
 
+    /**
+     * Перехватчик исключения ConnectException.
+     * @param e
+     * @return ResponseEntity
+     */
     @ExceptionHandler
     public ResponseEntity<BadConnectionServiceException> catchConnectException(ConnectException e) {
         log.error(e.getMessage(), e);

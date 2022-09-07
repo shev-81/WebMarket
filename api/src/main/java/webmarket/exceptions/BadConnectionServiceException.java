@@ -1,11 +1,17 @@
 package webmarket.exceptions;
 
+/**
+ * Исключение выбрасываемое при отсутствии соединения с сервисом.
+ */
 public class BadConnectionServiceException extends RuntimeException{
 
     public enum CartServiceErrors {
         SERVICE_SHUTDOWN, CART_NOT_FOUND
     }
 
+    /**
+     * Код ошибки.
+     */
     private CartServiceErrors code;
 
     public BadConnectionServiceException() {

@@ -14,9 +14,18 @@ import java.util.Optional;
 @Repository
 public interface AnalitRepository extends CrudRepository<Statistic, Integer> {
 
+    /**
+     * Запрос получения всех продуктов.
+     * @return список продуктов.
+     */
     @Query("select s from Statistic s")
     List<Statistic> getAll ();
 
+    /**
+     * Запрос на получение статистики продукиа по имени продукта.
+     * @param nameProduct
+     * @return продукт по соответствию имени.
+     */
     @Query("select s from Statistic s where s.nameProducts = :nameProduct")
     Optional<Statistic> findProductByName(String nameProduct);
 

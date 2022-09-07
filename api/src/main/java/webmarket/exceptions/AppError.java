@@ -1,7 +1,19 @@
 package webmarket.exceptions;
 
+/**
+ * Класс обертка, объект класса создается для отправки на фронт после
+ * перехвата исключения глобальным перехватчиком исключений.
+ */
 public class AppError {
+
+    /**
+     * Код ошибки исключения.
+     */
     private int statusCode;
+
+    /**
+     * Сообщение от исключения.
+     */
     private String message;
 
     public int getStatusCode() {
