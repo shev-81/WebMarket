@@ -15,6 +15,9 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * Определяет методы работы с токенами пользователям.
+ */
 @Component
 public class JwtTokenUtil {
     @Value("${jwt.secret}")
@@ -23,6 +26,11 @@ public class JwtTokenUtil {
     @Value("${jwt.lifetime}")
     private Integer jwtLifetime;
 
+    /**
+     * Создание нового токена пользователю.
+     * @param userDetails
+     * @return токен.
+     */
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         List<String> rolesList = userDetails.getAuthorities().stream()

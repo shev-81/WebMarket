@@ -13,6 +13,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 
+/**
+ * Определяет настройки безопасности.
+ */
 @EnableWebSecurity
 @RequiredArgsConstructor
 @Slf4j

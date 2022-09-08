@@ -7,6 +7,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+/**
+ * Сущность описывающая роли пользователя.
+ */
 @Entity
 @Data
 @Table(name = "roles")
@@ -16,6 +19,9 @@ public class Role {
     @Column(name = "id")
     private Long id;
 
+    /**
+     * Имя пользователя.
+     */
     @Column(name = "name")
     private String name;
 

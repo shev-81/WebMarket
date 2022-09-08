@@ -4,6 +4,10 @@ import com.webmarket.dto.JwtRequest;
 import com.webmarket.dto.JwtResponse;
 import com.webmarket.services.UserService;
 import com.webmarket.utils.JwtTokenUtil;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import webmarket.exceptions.AppError;
 
+/**
+ * Контроллер с Энд-поинтом для получения токена пользователя.
+ */
 @RestController
 @RequiredArgsConstructor
 public class AuthController {
@@ -23,7 +30,17 @@ public class AuthController {
     private final JwtTokenUtil jwtTokenUtil;
     private final AuthenticationManager authenticationManager;
 
+
     @PostMapping("/auth")
+    @Operation(
+            summary = "Запрос на получение токена пользователя.",
+            responses = {
+                    @ApiResponse(
+                            description = "Успешный ответ", responseCode = "200",
+                            content = @Content(schema = @Schema(implementation = ResponseEntity.class))
+                    )
+            }
+    )
     public ResponseEntity<?> createAuthToken(@RequestBody JwtRequest authRequest) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));

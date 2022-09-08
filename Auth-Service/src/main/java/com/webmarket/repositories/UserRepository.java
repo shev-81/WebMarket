@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Репозитарий для работы с пользователями.
+ */
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
     Optional<User> findByUsername(String username);

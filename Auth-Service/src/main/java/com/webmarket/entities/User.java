@@ -8,6 +8,9 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
+/**
+ * Сущность описывающаяя пользователя.
+ */
 @Entity
 @Data
 @Table(name = "users")
@@ -17,18 +20,33 @@ public class User {
     @Column(name = "id")
     private Long id;
 
+    /**
+     * Имя.
+     */
     @Column(name = "username")
     private String username;
 
+    /**
+     * Пароль.
+     */
     @Column(name = "password")
     private String password;
 
+    /**
+     * Фио.
+     */
     @Column(name = "fio")
     private String fio;
 
+    /**
+     * Емайл.
+     */
     @Column(name = "email")
     private String email;
 
+    /**
+     * Телефон.
+     */
     @Column(name = "phone")
     private String phone;
 

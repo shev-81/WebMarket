@@ -24,13 +24,30 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
 
+    /**
+     * Репозитарий пользователей.
+     */
     private final UserRepository userRepository;
+
+    /**
+     * Реопзитарий ролей пользователя.
+     */
     private final RoleRepository roleRepository;
 
+    /**
+     * Ищет пользователя в реопзитарии по его имени.
+     * @param username
+     * @return
+     */
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
+    /**
+     * Создает нового пользователя с ролями.
+     * @param user
+     * @param role
+     */
     @Transactional
     public void createNewUser(User user, String role){
         User u = userRepository.save(user);
@@ -39,14 +56,28 @@ public class UserService implements UserDetailsService {
         userRepository.save(u);
     }
 
+    /**
+     * Выбирает всех пользователей.
+     * @return
+     */
     public List<User> getAll(){
         return userRepository.getAll();
     }
 
+    /**
+     * Удаляет пользователя по Id.
+      * @param id
+     */
     public void deleteById(Long id){
         userRepository.deleteById(id);
     }
 
+    /**
+     * Получает данные пользователя по его имени.
+     * @param username
+     * @return UserDetails
+     * @throws UsernameNotFoundException
+     */
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
