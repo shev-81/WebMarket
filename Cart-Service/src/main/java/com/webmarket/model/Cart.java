@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Модель корзины.
+ */
 @Data
 @Schema(description = "Корзина продуктов")
 public class Cart {

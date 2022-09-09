@@ -10,16 +10,29 @@ import webmarket.exceptions.AppError;
 import webmarket.exceptions.BadConnectionServiceException;
 import webmarket.exceptions.ResourceNotFoundException;
 
-
+/**
+ * Глобальный перехватчик исключений. Оборачивает исключения в ResponseEntity<> с кодом ошибки.
+ */
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
+
+    /**
+     * Перехватчик исключения ResourceNotFoundException.
+     * @param e ResourceNotFoundException
+     * @return
+     */
     @ExceptionHandler
     public ResponseEntity<AppError> catchResourceNotFoundException(ResourceNotFoundException e) {
         log.error(e.getMessage(), e);
         return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(), e.getMessage()), HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Перехватчик исключения BadConnectionServiceException.
+     * @param e BadConnectionServiceException
+     * @return
+     */
     @ExceptionHandler
     public ResponseEntity<AppError> catchBadConnectionServiceException(BadConnectionServiceException e) {
         log.error(e.getMessage(), e);

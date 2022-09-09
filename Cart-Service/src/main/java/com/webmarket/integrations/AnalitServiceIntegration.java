@@ -11,14 +11,24 @@ import webmarket.core.ProductDto;
 
 import java.util.ArrayList;
 
+/**
+ * Отвечает за интеграцию с сервисом Аналитики.
+ */
 @Data
 @Component
 public class AnalitServiceIntegration {
 
+    /**
+     * Клиент для запросов в сервис аналитики.
+     */
     @Autowired
     @Qualifier("analyticServiceWebClient")
     private WebClient analitServiceWebClient;
 
+    /**
+     * Посылает запрос в сервис аналитики для регистрации товара.
+     * @param productDto
+     */
     public void registration(ArrayList <ProductDto> productDto){
         analitServiceWebClient.post()
                 .uri("/api/v1/analit/reg")

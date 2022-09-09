@@ -8,6 +8,9 @@ import webmarket.core.ProductDto;
 
 import java.math.BigDecimal;
 
+/**
+ * Модель позиции в корзине.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
