@@ -26,6 +26,10 @@ public class Cart {
         this.items = new ArrayList<>();
     }
 
+    /**
+     * Добавляет продукт в корзину.
+     * @param productDto
+     */
     public void add(ProductDto productDto) {
         if (add(productDto.getId())) {
             return;
@@ -45,6 +49,10 @@ public class Cart {
         return false;
     }
 
+    /**
+     * Уменьшает колличество продуктов, в позиции продукта.
+     * @param productId
+     */
     public void decrement(Long productId) {
         Iterator<CartItem> iter = items.iterator();
         while (iter.hasNext()) {
@@ -60,6 +68,10 @@ public class Cart {
         }
     }
 
+    /**
+     * Удаляет продукт из корзины.
+     * @param productId
+     */
     public void remove(Long productId) {
         items.removeIf(o -> o.getProductId().equals(productId));
         recalculate();
@@ -70,6 +82,9 @@ public class Cart {
         totalPrice = BigDecimal.ZERO;
     }
 
+    /**
+     * Делает перерасчет итогвой стоимости корзины.
+     */
     private void recalculate() {
         totalPrice = BigDecimal.ZERO;
         for (CartItem o : items) {
@@ -77,6 +92,11 @@ public class Cart {
         }
     }
 
+    /**
+     * Объединяет данные из корзины не зарегистрированного пользователя
+     * с корзиной пользователя прошедшего регистрацию.
+     * @param another
+     */
     public void merge(Cart another) {
         for (CartItem anotherItem : another.items) {
             boolean merged = false;
