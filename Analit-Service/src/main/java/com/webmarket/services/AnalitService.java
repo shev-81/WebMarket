@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import webmarket.core.ProductDto;
 import webmarket.analitic.StatisticDto;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,37 +39,40 @@ public class AnalitService {
     private final AnalitRepository analitRepository;
 
     /**
-     * Клиент для запросов.
+     * Список продуктов из 10 позицый самых востребованных покупателями.
      */
-    private final RestTemplate restTemplate;
+    private List<StatisticDto> listProduct;
 
-    public List<StatisticDto> getAll(){
-        return analitRepository.getAll().stream().map(s-> (new StatisticDto(s.getNameProducts(), s.getCountVisits()))).collect(Collectors.toList());
+    @PostConstruct
+    private void init(){
+        listProduct = new ArrayList<>();
+    }
+
+    public List<StatisticDto> getData(){
+        return listProduct;
     }
 
     /**
      * Регистрирует список продуктов, полученный от сервиса корзины, в базе данных.
-     * @param productDtoList
+     * @param product
      */
     @Transactional
-    public void register(ArrayList<ProductDto> productDtoList){
-        for(ProductDto product: productDtoList){
-            Statistic statistic = analitRepository.findProductByName(product.getName()).orElse(null);
-            if(statistic == null){
-                statistic = new Statistic(product.getName(), 1);
-            }else{
-                statistic.setCountVisits(statistic.getCountVisits()+1);
-            }
-            analitRepository.save(statistic);
+    public void register(ProductDto product){
+        Statistic statistic = analitRepository.findProductByName(product.getName()).orElse(null);
+        if(statistic == null){
+            statistic = new Statistic(product.getName(), 1);
+        }else{
+            statistic.setCountVisits(statistic.getCountVisits()+1);
         }
+        analitRepository.save(statistic);
     }
 
     /**
-     * Каждые 10 секунд посылает запрос в сервис корзин. Наличие запроса, по сути пинга воспринимается сервисом
+     * Каждые 10 секунд обновляет данные в списке самых востребованных товаров. Наличие запроса, по сути пинга воспринимается сервисом
      * корзины как команда для формирования ответа и очищения своего временного списка востребованных товаров.
      */
     @Scheduled(fixedDelay = 10000)
     public void requestData(){
-        restTemplate.getForObject(cartServiceUrl + "/api/v1/cart/analit", Void.class);
+        listProduct = analitRepository.findLastTen().stream().map(s-> (new StatisticDto(s.getNameProducts(), s.getCountVisits()))).collect(Collectors.toList());
     }
 }

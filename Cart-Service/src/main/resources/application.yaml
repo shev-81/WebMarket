@@ -10,3 +10,8 @@ integrations:
     url: http://localhost:5555/core
   analit-service:
     url: http://localhost:5555/analit
+spring:
+  kafka:
+    consumer:
+      group-id: 223
+    bootstrap-servers: localhost:9092

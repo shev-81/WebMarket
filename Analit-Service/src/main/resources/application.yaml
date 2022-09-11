@@ -13,6 +13,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  kafka:
+    consumer:
+      group-id: 223
+    bootstrap-servers: localhost:9092
 jwt:
   secret: h4f8093h4f983yhrt9834hr0934hf0hf493g493gf438rh438th34g34g
   lifetime: 36000000

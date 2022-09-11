@@ -5,14 +5,17 @@ import com.webmarket.integrations.ProductServiceIntegration;
 import com.webmarket.model.Cart;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
+import org.springframework.util.concurrent.ListenableFuture;
 import webmarket.core.ProductDto;
 import webmarket.exceptions.ResourceNotFoundException;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.UUID;
 import java.util.function.Consumer;
 
@@ -23,15 +26,13 @@ public class CartService {
     private final ProductServiceIntegration productsService;
     private final AnalitServiceIntegration analitService;
     private final RedisTemplate<String, Object> redisTemplate;
-    private ArrayList<ProductDto>  listProductsForAnalit;
 
     @Value("${utils.cart.prefix}")
     private String cartPrefix;
 
-    @PostConstruct
-    private void init(){
-        listProductsForAnalit = new ArrayList<>();
-    }
+    @Qualifier(value = "KafkaAnalit")
+    @Autowired
+    private KafkaTemplate<Long, ProductDto> kafkaTemplate;
 
     public String getCartUuidFromSuffix(String suffix) {
         return cartPrefix + suffix;
@@ -48,12 +49,20 @@ public class CartService {
         return (Cart) redisTemplate.opsForValue().get(cartKey);
     }
 
+    /**
+     * Добавление продукта в корзину и отправка сообщения через
+     * кафку в сервис аналитики о добавлении продукта в корзину.
+     * @param cartKey
+     * @param productId
+     */
     public void addToCart(String cartKey, Long productId) {
         ProductDto productDto = productsService.findById(productId).orElseThrow(() -> new ResourceNotFoundException("Невозможно добавить продукт в корзину. Продукт не найдет, id: " + productId));
-        listProductsForAnalit.add(productDto);
         execute(cartKey, c -> {
             c.add(productDto);
         });
+        ListenableFuture<SendResult<Long, ProductDto>> future = kafkaTemplate.send("ProductAnalit", productDto);
+        //future.addCallback(System.out::println, System.err::println);
+        kafkaTemplate.flush();
     }
 
     public void clearCart(String cartKey) {
@@ -84,13 +93,5 @@ public class CartService {
 
     public void updateCart(String cartKey, Cart cart) {
         redisTemplate.opsForValue().set(cartKey, cart);
-    }
-
-    public ArrayList<ProductDto> getListProductsForAnalit() {
-        return listProductsForAnalit;
-    }
-
-    public void clearListProductsForAnalit(){
-        listProductsForAnalit.clear();
     }
 }

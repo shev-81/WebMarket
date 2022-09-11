@@ -135,26 +135,6 @@ public class CartsController {
         );
     }
 
-    @GetMapping("/analit")
-    @Operation(
-            summary = "Запрос на получение данных о добавляемых в корзины продуктов у пользователей",
-            responses = {
-                    @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
-                            content = @Content(
-                                    mediaType = "application/json",
-                                    array = @ArraySchema(schema = @Schema(implementation = ProductDto.class))
-                            )
-                    )
-            }
-    )
-    public ArrayList<ProductDto> getAnalit(){
-        buferAnalitListProductDto.clear();
-        buferAnalitListProductDto.addAll(cartService.getListProductsForAnalit());
-        cartService.getAnalitService().registration(buferAnalitListProductDto);
-        cartService.clearListProductsForAnalit();
-        return buferAnalitListProductDto;
-    }
 
     private String getCurrentCartUuid(String username, String uuid) {
         if (username != null) {

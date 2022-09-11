@@ -29,4 +29,10 @@ public interface AnalitRepository extends CrudRepository<Statistic, Integer> {
     @Query("select s from Statistic s where s.nameProducts = :nameProduct")
     Optional<Statistic> findProductByName(String nameProduct);
 
+    /**
+     * Выбирает последние 10 записей продуктов отсортированные по востребованности.
+     * @return
+     */
+    @Query(value = "select * from statistic order by count_visits desc limit 10", nativeQuery = true)
+    List<Statistic> findLastTen();
 }
