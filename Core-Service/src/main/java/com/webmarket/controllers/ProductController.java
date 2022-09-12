@@ -33,9 +33,18 @@ public class ProductController {
     private final ProductConverter productConverter;
     private final ProductValidator productValidator;
 
+    /**
+     * Запрос на получение страницы продуктов
+     * @param page
+     * @param minPrice
+     * @param maxPrice
+     * @param nameCategory
+     * @param namePart
+     * @return
+     */
     @GetMapping
     @Operation(
-            summary = "Запрос на получение страницы продуктов",
+            summary = "Запрос на получение страницы продуктов.",
             responses = {
                     @ApiResponse(
                             description = "Успешный ответ", responseCode = "200",
@@ -57,6 +66,11 @@ public class ProductController {
         );
     }
 
+    /**
+     * Запрос на получение продукта по id.
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}")
     @Operation(
             summary = "Запрос на получение продукта по id",
@@ -72,6 +86,10 @@ public class ProductController {
         return productConverter.entityToDto(product);
     }
 
+    /**
+     * Запрос на получение списка продуктов.
+     * @return
+     */
     @GetMapping("/all")
     @Operation(
             summary = "Запрос на получение списка продуктов",
@@ -88,6 +106,11 @@ public class ProductController {
         return productService.findAll().stream().map(p -> productConverter.entityToDto(p)).collect(Collectors.toList());
     }
 
+    /**
+     * Запрос на добавление нового продукта в БД продуктов.
+     * @param productDto
+     * @return
+     */
     @PostMapping
     @Operation(
             summary = "Запрос на добавление нового продукта в БД продуктов",
@@ -106,12 +129,21 @@ public class ProductController {
         return productConverter.entityToDto(product);
     }
 
+    /**
+     * Запрос на удаление продукта в БД продуктов.
+     * @param id
+     */
     @Hidden
     @DeleteMapping("/{id}")
     public void delProducts(@PathVariable @Parameter(description = "ID продукта", required = true) Long id) {
         productService.delProdictById(id);
     }
 
+    /**
+     * Запрос на сохранение изменений у продукта в БД продуктов.
+     * @param productDto
+     * @return
+     */
     @PutMapping
     @Operation(
             summary = "Запрос на сохранение изменений у продукта в БД продуктов",

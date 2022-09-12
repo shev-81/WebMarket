@@ -8,12 +8,22 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import webmarket.cart.CartDto;
 
+/**
+ * Интеграция с сервисом корзин.
+ */
 @Component
 @RequiredArgsConstructor
 public class CartServiceIntegration {
 
+    /**
+     * Клиент для запросов в сервис корзин.
+     */
     private final WebClient cartServiceWebClient;
 
+    /**
+     * Посылает запрос в сервис корзин, для очистки корзины пользователя.
+     * @param username
+     */
     public void clearUserCart(String username) {
         cartServiceWebClient.get()
                 .uri("/api/v1/cart/0/clear")
@@ -23,6 +33,11 @@ public class CartServiceIntegration {
                 .block();
     }
 
+    /**
+     * Посылает запрос в сервис корзин для получения корзины пользователя.
+     * @param username
+     * @return
+     */
     public CartDto getUserCart(String username) {
         CartDto cart = cartServiceWebClient.get()
                 .uri("/api/v1/cart/0")

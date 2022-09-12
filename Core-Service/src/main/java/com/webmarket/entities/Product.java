@@ -9,6 +9,9 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * Сущность продукта.
+ */
 @Entity
 @Table(name = "products")
 @Data
@@ -19,9 +22,15 @@ public class Product {
     @Column(name = "id")
     private Long id;
 
+    /**
+     * Наименование продукта.
+     */
     @Column(name = "name")
     private String name;
 
+    /**
+     * Цена продукта.
+     */
     @Column(name = "price")
     private BigDecimal price;
 

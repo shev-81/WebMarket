@@ -10,6 +10,9 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * Сущность позиции в заказе.
+ */
 @Entity
 @Table(name = "order_items")
 @Data
@@ -25,12 +28,21 @@ public class OrderItem {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    /**
+     * Количество.
+     */
     @Column(name = "quantity")
     private Integer quantity;
 
+    /**
+     * Цена за единицу.
+     */
     @Column(name = "price_per_product")
     private BigDecimal pricePerProduct;
 
+    /**
+     * Цена позиции.
+     */
     @Column(name = "price")
     private BigDecimal price;
 

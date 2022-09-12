@@ -7,9 +7,17 @@ import webmarket.core.CategoryDto;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Конвертер сущности в ДТО и обратно.
+ */
 @Component
 public class CategoryConverter {
 
+    /**
+     * Конвертирует список категорий в список ДТО категорий.
+     * @param categories
+     * @return
+     */
     public List<CategoryDto> entityToDto(List<Category> categories){
         List<CategoryDto> categoryDtoList = new ArrayList<>();
         for(Category category: categories){
@@ -18,6 +26,12 @@ public class CategoryConverter {
         return categoryDtoList;
     }
 
+    /**
+     * Временно не используется и кидает.
+     * @see UnsupportedOperationException
+     * @param categoryDto
+     * @return
+     */
     public Category dtoToEntity(CategoryDto categoryDto) {
         throw new UnsupportedOperationException();
     }

@@ -18,14 +18,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
 
+/**
+ * Контроллер для работы с платежной системой PayPal
+ */
 @Controller
 @RequestMapping("/api/v1/paypal")
 @RequiredArgsConstructor
 public class PayPalController {
+
+    /**
+     * Клиент для запросов.
+     */
     private final PayPalHttpClient payPalClient;
+
+    /**
+     * Сервис заказов.
+     */
     private final OrderService orderService;
+
+    /**
+     * Сервис PayPal.
+     */
     private final PayPalService payPalService;
 
+    /**
+     * Запрос на создание заказа в платежной системе.
+     * @param orderId
+     * @return
+     * @throws IOException
+     */
     @PostMapping("/create/{orderId}")
     public ResponseEntity<?> createOrder(@PathVariable Long orderId) throws IOException {
         OrdersCreateRequest request = new OrdersCreateRequest();
@@ -35,6 +56,12 @@ public class PayPalController {
         return new ResponseEntity<>(response.result().id(), HttpStatus.valueOf(response.statusCode()));
     }
 
+    /**
+     * Запрос при подтверждении заказа платежной системой.
+     * @param payPalId
+     * @return
+     * @throws IOException
+     */
     @PostMapping("/capture/{payPalId}")
     public ResponseEntity<?> captureOrder(@PathVariable String payPalId) throws IOException {
         OrdersCaptureRequest request = new OrdersCaptureRequest(payPalId);

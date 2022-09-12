@@ -9,6 +9,9 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Сущность категории товаров.
+ */
 @Data
 @Entity
 @NoArgsConstructor
@@ -19,9 +22,15 @@ public class Category {
     @Column(name = "id")
     private Long id;
 
+    /**
+     * Наименование.
+     */
     @Column(name = "name")
     private String name;
 
+    /**
+     * Список продуктов в категории.
+     */
     @OneToMany (mappedBy = "category")
     private List<Product> products;
 

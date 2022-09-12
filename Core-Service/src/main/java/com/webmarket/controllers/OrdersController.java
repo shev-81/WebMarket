@@ -19,14 +19,30 @@ import webmarket.exceptions.ResourceNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Контроллер для работы с заказами.
+ */
 @RestController
 @RequestMapping("/api/v1/orders")
 @RequiredArgsConstructor
 @Tag(name = "Заказы", description = "Методы работы с заказами")
 public class OrdersController {
+
+    /**
+     * Сервис заказов.
+     */
     private final OrderService orderService;
+
+    /**
+     * Конвертер сущностей.
+     */
     private final OrderConverter orderConverter;
 
+    /**
+     * Запрос на создание нового заказа.
+     * @param username
+     * @param orderDetailsDto
+     */
     @PostMapping
     @Operation(
             summary = "Запрос на создание нового заказа",
@@ -43,7 +59,11 @@ public class OrdersController {
         orderService.createOrder(username, orderDetailsDto);
     }
 
-
+    /**
+     * Запрос на получение списка заказов.
+     * @param username
+     * @return
+     */
     @GetMapping
     @Operation(
             summary = "Запрос на получение списка заказов",
@@ -61,6 +81,11 @@ public class OrdersController {
         return orderService.findOrdersByUsername(username).stream().map(o -> orderConverter.entityToDto(o)).collect(Collectors.toList());
     }
 
+    /**
+     * Запрос на получение заказа по ID.
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}")
     @Operation(
             summary = "Запрос на получение заказа по ID",

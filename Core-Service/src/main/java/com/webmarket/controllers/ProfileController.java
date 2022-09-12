@@ -16,6 +16,12 @@ import webmarket.core.ProfileDto;
 @RequestMapping("/api/v1/profile")
 @Tag(name = "Пользователи", description = "Методы работы с пользователями")
 public class ProfileController {
+
+    /**
+     * Запрос на получение имени пользователя.
+     * @param username
+     * @return
+     */
     @GetMapping
     @Operation(
             summary = "Запрос на получение имени пользователя",

@@ -19,29 +19,66 @@ import webmarket.exceptions.ResourceNotFoundException;
 import java.util.UUID;
 import java.util.function.Consumer;
 
+/**
+ * Сервис для работы с корзиной, основные задачи это выдача объекта корзины пользователю.
+ * Если незарегистрированный то выдается
+ */
 @Service
 @Data
 @RequiredArgsConstructor
 public class CartService {
+
+    /**
+     * Прокси для обращения в продуктовый сервис
+     */
     private final ProductServiceIntegration productsService;
+
+    /**
+     * Прокси для обращения в сервис Аналитики.
+     */
     private final AnalitServiceIntegration analitService;
+
+    /**
+     * Шаблон для работы с Redis.
+     */
     private final RedisTemplate<String, Object> redisTemplate;
 
+    /**
+     * Префикс для каждой корзины
+     */
     @Value("${utils.cart.prefix}")
     private String cartPrefix;
 
+    /**
+     * Шаблон для отправки сообщений в шину обмена данными кафки.
+     */
     @Qualifier(value = "KafkaAnalit")
     @Autowired
     private KafkaTemplate<Long, ProductDto> kafkaTemplate;
 
+    /**
+     * Выдает уникальный номер корзины с суфиксом.
+     * @param suffix
+     * @return String
+     */
     public String getCartUuidFromSuffix(String suffix) {
         return cartPrefix + suffix;
     }
 
+    /**
+     * Возвращает рандомно сгенерированную строку, используемую как
+     * уникальный индификатор корзины.
+     * @return String
+     */
     public String generateCartUuid() {
         return UUID.randomUUID().toString();
     }
 
+    /**
+     * По уникальному ключу корзины достает из Redis объект корзины.
+     * @param cartKey
+     * @return
+     */
     public Cart getCurrentCart(String cartKey) {
         if (!redisTemplate.hasKey(cartKey)) {
             redisTemplate.opsForValue().set(cartKey, new Cart());

@@ -15,11 +15,19 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @EnableRedisRepositories
 public class RedisConfig {
 
+    /**
+     * Фабрика для соединения с Redis
+     * @return
+     */
     @Bean
     public JedisConnectionFactory jedisConnectionFactory() {
         return new JedisConnectionFactory();
     }
 
+    /**
+     * Шаблон для выполнения запросов к Redis
+     * @return
+     */
     @Bean
     public RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> template = new RedisTemplate<>();

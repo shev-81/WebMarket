@@ -12,6 +12,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+/**
+ * Энд поит Веб сервиса SOAP для получения категории по имени.
+ */
 @Endpoint
 @RequiredArgsConstructor
 public class CategoryEndpoint {

@@ -11,12 +11,20 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import java.util.List;
 
+/**
+ * Энд поит Веб сервиса SOAP для получения категории по имени.
+ */
 @Endpoint
 @RequiredArgsConstructor
 public class ProductsEndpoint {
     private static final String NAMESPACE_URI = "http://www.shev.com/spring/ws/products";
     private final ProductService productService;
 
+    /**
+     * Получение продукта по имени.
+     * @param request
+     * @return
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getProductByNameRequest")
     @ResponsePayload
     public GetProductByNameResponse getProductByName(@RequestPayload GetProductByNameRequest request) {
@@ -30,6 +38,11 @@ public class ProductsEndpoint {
         return response;
     }
 
+    /**
+     * Получение списка продуктов.
+     * @param request
+     * @return
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllProductsRequest")
     @ResponsePayload
     public GetAllProductsResponse getAllStudents(@RequestPayload GetAllProductsRequest request) {

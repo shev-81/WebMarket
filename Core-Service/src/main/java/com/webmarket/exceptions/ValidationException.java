@@ -5,6 +5,9 @@ import lombok.Data;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Ошибка валидации
+ */
 @Data
 public class ValidationException extends RuntimeException {
     private List<String> errorFieldsMessages;

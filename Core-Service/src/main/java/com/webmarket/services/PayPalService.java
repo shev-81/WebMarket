@@ -11,11 +11,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Основная задача сервиса сформировать запрос на основании данных из заказа пользователя.
+ */
 @Service
 @RequiredArgsConstructor
 public class PayPalService {
+
+    /**
+     * Сервис заказов.
+     */
     private final OrderService orderService;
 
+    /**
+     * Создает запрос в систему PayPal на основании данных полученных из заказа пользователя.
+     * @param orderId
+     * @return
+     */
     @Transactional
     public OrderRequest createOrderRequest(Long orderId) {
         com.webmarket.entities.Order order = orderService.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("Заказ не найден"));
