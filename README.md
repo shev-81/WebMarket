@@ -1,5 +1,5 @@
 <h1 align="center">WebMarket
-<h3 align="center">Интернет Магазин на микросервисной архитектуре. (Spring Boot, REST, Docker)</h3>
+<h3 align="center">Интернет Магазин на микросервисной архитектуре. (Spring Boot, REST, Docker, Kafka)</h3>
 
 ### Реализация на Spring Boot несколько микросервисов.
 Реализация на стеке REST + Angular технологий. В проекте использованы несколько баз данных в разных MS: MySQL, Postgres, Redis.
