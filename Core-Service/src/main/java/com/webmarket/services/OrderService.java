@@ -1,7 +1,5 @@
 package com.webmarket.services;
 
-
-
 import com.webmarket.entities.Order;
 import com.webmarket.entities.OrderItem;
 import com.webmarket.integrations.CartServiceIntegration;
@@ -16,7 +14,6 @@ import webmarket.cart.CartDto;
 import webmarket.core.OrderDetailsDto;
 import webmarket.exceptions.ResourceNotFoundException;
 
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,6 +21,9 @@ import java.util.stream.Collectors;
 import static com.webmarket.enums.StatusCode.PAID;
 
 
+/**
+ * Сервис заказов, создает заказ на основании данных из корзины.
+ */
 @Service
 @RequiredArgsConstructor
 public class OrderService {
@@ -35,6 +35,11 @@ public class OrderService {
     @Value("${integrations.auth-service.url}")
     private String authServiceUrl;
 
+    /**
+     * Создает ззаказ на основании полученных данных.
+     * @param userName
+     * @param orderDetailsDto
+     */
     @Transactional
     public void createOrder(String userName, OrderDetailsDto orderDetailsDto) {
         CartDto currentCart = cartServiceIntegration.getUserCart(userName);
@@ -63,14 +68,28 @@ public class OrderService {
         cartServiceIntegration.clearUserCart(userName);
     }
 
+    /**
+     * Возвращает список заказов для пользователя.
+     * @param username
+     * @return
+     */
     public List<Order> findOrdersByUsername(String username) {
         return ordersRepository.findAllByUsername(username);
     }
 
+    /**
+     * Возвращает Заказ по его Id.
+     * @param id
+     * @return
+     */
     public Optional<Order> findById(Long id) {
         return ordersRepository.findById(id);
     }
 
+    /**
+     * Сохраняет заказ.
+     * @param id
+     */
     @Transactional
     public void saveOrderById(Long id){
        Order order = findById(id).orElseThrow(() -> new ResourceNotFoundException("Order not found"));

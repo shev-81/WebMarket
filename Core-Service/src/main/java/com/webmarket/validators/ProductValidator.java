@@ -8,6 +8,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Валидатор полей продукта DTO
+ */
 @Component
 public class ProductValidator {
     public void validate(ProductDto productDto) {

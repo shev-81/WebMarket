@@ -4,6 +4,9 @@ package com.webmarket.repositories.specifications;
 import com.webmarket.entities.Product;
 import org.springframework.data.jpa.domain.Specification;
 
+/**
+ * Спецификации для фильтрации Продуктов.
+ */
 public class ProductSpecifications {
     public static Specification<Product> scoreGreaterOrEqualsThan(Integer price) {
         return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.greaterThanOrEqualTo(root.get("price"), price);

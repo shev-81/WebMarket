@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Накопитель сообщений об ошибках.
+ */
 @NoArgsConstructor
 @Data
 public class FieldsValidationError {
