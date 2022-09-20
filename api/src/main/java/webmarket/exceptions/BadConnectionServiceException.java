@@ -1,7 +1,7 @@
 package webmarket.exceptions;
 
 /**
- * Исключение выбрасываемое при отсутствии соединения с сервисом.
+ * An exception thrown when there is no connection to the service.
  */
 public class BadConnectionServiceException extends RuntimeException{
 
@@ -10,7 +10,7 @@ public class BadConnectionServiceException extends RuntimeException{
     }
 
     /**
-     * Код ошибки.
+     * Error code.
      */
     private CartServiceErrors code;
 

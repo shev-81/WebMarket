@@ -9,14 +9,14 @@ import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSeriali
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
- * Определяет настройки для использования БД Redis.
+ * Defines the settings for using the Redis database.
  */
 @Configuration
 @EnableRedisRepositories
 public class RedisConfig {
 
     /**
-     * Фабрика для соединения с Redis
+     * Factory for connecting to Redis.
      * @return
      */
     @Bean
@@ -25,7 +25,7 @@ public class RedisConfig {
     }
 
     /**
-     * Шаблон для выполнения запросов к Redis
+     * Template for making requests to Redis.
      * @return
      */
     @Bean

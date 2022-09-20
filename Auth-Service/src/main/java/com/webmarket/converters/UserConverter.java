@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- *  Класс конвертер сущьности в ДТО и из ДТО в сущность.
+ *  The class is a converter of an entity to a DTO and from a DTO to an entity.
  */
 @Data
 @AllArgsConstructor
@@ -23,17 +23,17 @@ import java.util.stream.Collectors;
 public class UserConverter {
 
     /**
-     * Сервис работы с пользователями.
+     * Service for working with users.
      */
     private UserService userService;
 
     /**
-     * Кодировщик пароля.
+     * Password encoder.
      */
     private PasswordEncoder passwordEncoder;
 
     /**
-     * Конвертирует ДТО объект в сущность пользователя.
+     * Converts the DTO object into a user entity.
      * @param userDto
      * @return Сущность пользователя
      */
@@ -51,9 +51,9 @@ public class UserConverter {
     }
 
     /**
-     * Конвертирует Сущность пользователя в ДТО объект.
+     * Converts the User's Entity into a DTO object.
      * @param user
-     * @return ДТО объект пользователя
+     * @return DTO user object
      */
     public UserDto entityToDto(User user) {
         UserDto uDto = new UserDto();
@@ -68,9 +68,9 @@ public class UserConverter {
     }
 
     /**
-     * Возваращает список ролей в виде строки. Роли разделены пробелами.
+     * Returns a list of roles as a string. The roles are separated by spaces.
      * @param user
-     * @return строковое представление списка ролей.
+     * @return string representation of the list of roles.
      */
     @Transactional
     public String getRole (User user){

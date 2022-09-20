@@ -2,9 +2,15 @@ package webmarket.core;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+/**
+ * User Model.
+ */
 @Schema(description = "Модель пользователя")
 public class ProfileDto {
 
+    /**
+     * Username.
+     */
     @Schema(description = "Имя пользователя", required = true, example = "Иван Сергеевич")
     private String username;
 

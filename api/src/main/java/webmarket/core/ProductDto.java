@@ -4,15 +4,27 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 
+/**
+ * Product model.
+ */
 @Schema(description = "Модель продукта")
 public class ProductDto {
 
+    /**
+     * Product ID.
+     */
     @Schema(description = "ID продукта", required = true, example = "1")
     private Long id;
 
+    /**
+     * Product Name.
+     */
     @Schema(description = "Название продукта", required = true, maxLength = 255, minLength = 3, example = "Коробка конфет")
     private String name;
 
+    /**
+     * Product Price.
+     */
     @Schema(description = "Цена продукта", required = true, example = "120.21")
     private BigDecimal price;
 

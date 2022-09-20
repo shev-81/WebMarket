@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 /**
- * Сущность Статистика, хранит имя продукта и количество его добавления пользователями в корзину.
+ * The Statistics entity stores the name of the product and the number of its additions by users to the cart.
  */
 @Data
 @Entity

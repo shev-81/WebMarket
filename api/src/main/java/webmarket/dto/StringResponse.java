@@ -2,10 +2,16 @@ package webmarket.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+/**
+ * Response model.
+ */
 @Schema(description = "Модель ответа")
 public class StringResponse {
 
-    @Schema(description = "Сгенерированнный CartUuid", required = true, example = "kjhdfa98lLIlijsdo9s978sd0dslksdk")
+    /**
+     * Generated CartUuid.
+     */
+    @Schema(description = "Generated CartUuid", required = true, example = "kjhdfa98lLIlijsdo9s978sd0dslksdk")
     private String value;
 
     public String getValue() {

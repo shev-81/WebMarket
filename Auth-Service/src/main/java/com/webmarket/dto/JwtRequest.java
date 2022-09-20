@@ -3,18 +3,18 @@ package com.webmarket.dto;
 import lombok.Data;
 
 /**
- * ДТО с логином и паролем пользователя.
+ * DTO with the username and password of the user.
  */
 @Data
 public class JwtRequest {
 
     /**
-     * Логин пользователя.
+     * User login.
      */
     private String username;
 
     /**
-     * Пароль пользователя.
+     * The user's password.
      */
     private String password;
 }

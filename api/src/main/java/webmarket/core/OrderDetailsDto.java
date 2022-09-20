@@ -2,24 +2,45 @@ package webmarket.core;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+/**
+ * The model of the parts in the order.
+ */
 @Schema(description = "Модель деталей в заказе")
 public class OrderDetailsDto {
 
+    /**
+     * Postal code.
+     */
     @Schema(description = "Почтовый код", required = true, example = "143000")
     private String postalcode;
 
+    /**
+     * City.
+     */
     @Schema(description = "Город", required = true, example = "г. Москва")
     private String adminAreaTwoTown;
 
+    /**
+     * Street.
+     */
     @Schema(description = "Улица", required = true, example = "ул. Лубянка")
     private String addressLineOneStreet;
 
+    /**
+     * Apartment number.
+     */
     @Schema(description = "Номер апартаментов", required = true, example = "2/3")
     private String addressLineTwoApartmentNumber;
 
+    /**
+     * E-mail.
+     */
     @Schema(description = "E-mail", required = true, example = "ivan123@mail.ru")
     private String email;
 
+    /**
+     * Phone number in the order.
+     */
     @Schema(description = "Телефон в заказе", required = true, example = "8(903)495-12-23")
     private String phone;
 

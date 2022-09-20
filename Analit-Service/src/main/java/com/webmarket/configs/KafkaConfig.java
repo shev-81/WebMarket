@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Настройки Кафки, для отправки сообщений, а так же слушателя  для приема.
+ * Kafka settings, for sending messages, as well as a listener for receiving.
  */
 @Configuration
 public class KafkaConfig {
@@ -29,7 +29,7 @@ public class KafkaConfig {
     private String server;
 
     /**
-     * Карта свойств настроек продюсера.
+     * Map of producer settings properties.
      * @return
      */
     @Bean
@@ -42,7 +42,7 @@ public class KafkaConfig {
     }
 
     /**
-     * Десериализатор объектов сообщений.
+     * Deserializer of message objects.
      * @return
      */
     @Bean
@@ -53,8 +53,8 @@ public class KafkaConfig {
     }
 
     /**
-     * Карта свойств настроек консюмера.
-     * @return
+     * A map of the properties of the consumer settings.
+     * @return Map
      */
     @Bean
     public Map<String, Object> consumerConfig(){
@@ -68,7 +68,7 @@ public class KafkaConfig {
     }
 
     /**
-     * Фабрика консюмера.
+     * Consumer factory.
      * @return
      */
     @Bean
@@ -77,7 +77,7 @@ public class KafkaConfig {
     }
 
     /**
-     * Фабрика листенера.
+     * Listener's factory.
      * @return
      */
     @Bean
@@ -89,7 +89,7 @@ public class KafkaConfig {
     }
 
     /**
-     * Фабрика продюсера.
+     * Producer's factory.
      * @return
      */
     @Bean
@@ -98,7 +98,7 @@ public class KafkaConfig {
     }
 
     /**
-     * Шаблон кафки для отправки сообщений.
+     * Kafka template for sending messages.
      * @return
      */
     @Bean(value = "KafkaCart")

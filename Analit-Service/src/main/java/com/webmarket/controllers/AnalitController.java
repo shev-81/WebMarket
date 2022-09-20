@@ -16,7 +16,7 @@ import webmarket.analitic.StatisticDto;
 import java.util.List;
 
 /**
- * Контроллер Микросервиса доступен по адресу http://localhost:8111/web-market-analit/api/v1/analit
+ * The Microservice controller is available at http://localhost:8111/web-market-analit/api/v1/analit
  */
 @RestController
 @RequiredArgsConstructor
@@ -25,7 +25,7 @@ import java.util.List;
 public class AnalitController {
 
     /**
-     * Сервис Аналитики.
+     * Analytics Service.
      */
     private final AnalitService analitService;
 
@@ -48,8 +48,8 @@ public class AnalitController {
     }
 
     /**
-     * Слушатель забирает из очереди пришедший объект продукта и сохраняет его
-     * через сервис аналитики в своем репозитарии.
+     * The listener takes the incoming product object from the queue and saves it
+     * through the analytics service in your repository.
      * @param product
      */
     @KafkaListener(topics = "ProductAnalit")

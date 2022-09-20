@@ -4,14 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * ДТО с токеном для пользователя.
+ * DTO with a token for the user.
  */
 @Data
 @AllArgsConstructor
 public class JwtResponse {
 
     /**
-     * Токен пользователю.
+     * Token to the user.
      */
     private String token;
 }

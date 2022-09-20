@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Содержит в себе Модуль безопасности выдающий токены прошедшим
- * авторизацию пользователям. Использует для своей работы Базу
- * данных Postgres, в которой хранит информацию о пользователях магазина.
+ * Contains a security module that issues tokens to users who have passed
+ * authorization. Uses the Database for its work
+ * Postgres data, which stores information about the store's users.
  */
 @SpringBootApplication
 public class WebAuthServiceApplication {

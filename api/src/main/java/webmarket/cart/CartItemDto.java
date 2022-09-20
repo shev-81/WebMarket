@@ -5,21 +5,39 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 
+/**
+ * The position model ( DTO ) in the cart.
+ */
 @Schema(description = "Модель позиции ( DTO ) в корзине")
 public class CartItemDto {
 
+    /**
+     * Product ID
+     */
     @Schema(description = "ID продукта", required = true, example = "3")
     private Long productId;
 
+    /**
+     * Product Name.
+     */
     @Schema(description = "Наименование продукта", required = true, example = "Яблоко")
     private String productTitle;
 
+    /**
+     * Number of products in a position.
+     */
     @Schema(description = "Колличество продуктов в позиции", required = true, example = "6")
     private int quantity;
 
+    /**
+     * Price per unit of product.
+     */
     @Schema(description = "Цена за единицу продукта", required = true, example = "123.12")
     private BigDecimal pricePerProduct;
 
+    /**
+     * Position price with calculation (quantity multiplied by unit price).
+     */
     @Schema(description = "Цена позиции с расчетом (колличества помноженного на цену за единицу)", required = true, example = "738.72")
     private BigDecimal price;
 

@@ -19,23 +19,26 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Service for working with system users.
+ */
 @Service
 @Data
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
 
     /**
-     * Репозитарий пользователей.
+     * User repository.
      */
     private final UserRepository userRepository;
 
     /**
-     * Реопзитарий ролей пользователя.
+     * Repository of user roles.
      */
     private final RoleRepository roleRepository;
 
     /**
-     * Ищет пользователя в реопзитарии по его имени.
+     * Searches for a user in the repository by his name.
      * @param username
      * @return
      */
@@ -44,7 +47,7 @@ public class UserService implements UserDetailsService {
     }
 
     /**
-     * Создает нового пользователя с ролями.
+     * Creates a new user with roles.
      * @param user
      * @param role
      */
@@ -57,7 +60,7 @@ public class UserService implements UserDetailsService {
     }
 
     /**
-     * Выбирает всех пользователей.
+     * Selects all users.
      * @return
      */
     public List<User> getAll(){
@@ -65,7 +68,7 @@ public class UserService implements UserDetailsService {
     }
 
     /**
-     * Удаляет пользователя по Id.
+     * Deletes a user by Id.
       * @param id
      */
     public void deleteById(Long id){
@@ -73,7 +76,7 @@ public class UserService implements UserDetailsService {
     }
 
     /**
-     * Получает данные пользователя по его имени.
+     * Retrieves user data by name.
      * @param username
      * @return UserDetails
      * @throws UsernameNotFoundException

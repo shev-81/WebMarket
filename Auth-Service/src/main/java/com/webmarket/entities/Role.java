@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * Сущность описывающая роли пользователя.
+ * An entity describing the user's roles.
  */
 @Entity
 @Data
@@ -20,7 +20,7 @@ public class Role {
     private Long id;
 
     /**
-     * Имя пользователя.
+     * Username.
      */
     @Column(name = "name")
     private String name;

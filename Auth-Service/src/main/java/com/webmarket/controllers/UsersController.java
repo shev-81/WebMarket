@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Контроллер определяющий основные Энд-поинты для работы с пользователями.
+ * The controller defines the main End points for working with users.
  */
 @RestController
 @AllArgsConstructor
@@ -27,15 +27,21 @@ import java.util.stream.Collectors;
 public class UsersController {
 
     /**
-     * Сервис пользователей.
+     * User service.
      */
     private final UserService userService;
 
     /**
-     * Конвертер в ДТО из сущности и обратно.
+     * Converter to DTO from the entity and back.
      */
     private final UserConverter userConverter;
 
+
+    /**
+     * Request to get a list of users.
+     * http://localhost:5555/api/v1/user
+     * @return
+     */
     @GetMapping
     @Operation(
             summary = "Запрос на получение списка пользователей",
@@ -54,6 +60,12 @@ public class UsersController {
     }
 
 
+    /**
+     * Request to receive the user's DTO by his name.
+     * http://localhost:5555/api/v1/user/{userName}
+     * @param userName
+     * @return
+     */
     @GetMapping("/{userName}")
     @Operation(
             summary = "Запрос на получение ДТО пользователя по его имени.",
@@ -69,6 +81,11 @@ public class UsersController {
     }
 
 
+    /**
+     * Request to create a new user.
+     * http://localhost:5555/api/v1/new
+     * @param userDto
+     */
     @PostMapping("/new")
     @Operation(
             summary = "Запрос на создание нового пользователя.",
@@ -85,7 +102,11 @@ public class UsersController {
         userService.createNewUser(newUser, userDto.getRoles());
     }
 
-
+    /**
+     * Request to delete a user by his ID.
+     * http://localhost:5555/api/v1/{id}
+     * @param id
+     */
     @DeleteMapping("/{id}")
     @Operation(
             summary = "Запрос на удаление пользователя по его ID.",

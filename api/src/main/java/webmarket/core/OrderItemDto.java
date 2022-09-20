@@ -4,21 +4,39 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 
+/**
+ * The model of the item in the order.
+ */
 @Schema(description = "Модель позиции в заказе")
 public class OrderItemDto {
 
+    /**
+     * Product ID.
+     */
     @Schema(description = "ID продукта", required = true, example = "1")
     private Long productId;
 
+    /**
+     * Product Name.
+     */
     @Schema(description = "Наименование продукта", required = true, example = "Яблоко")
     private String productName;
 
+    /**
+     * Quantity.
+     */
     @Schema(description = "Колличество", required = true, example = "7")
     private int quantity;
 
+    /**
+     * Unit price.
+     */
     @Schema(description = "Цена за единицу", required = true, example = "122.21")
     private BigDecimal pricePerProduct;
 
+    /**
+     * Цена за единицу помноженная на колличество.
+     */
     @Schema(description = "Цена за единицу помноженная на колличество", required = true, example = "855,47")
     private BigDecimal price;
 

@@ -20,8 +20,8 @@ import java.util.UUID;
 import java.util.function.Consumer;
 
 /**
- * Сервис для работы с корзиной, основные задачи это выдача объекта корзины пользователю.
- * Если незарегистрированный то выдается
+ * A service for working with a basket, the main tasks are to issue a basket object to the user.
+ * If unregistered, it is issued.
  */
 @Service
 @Data
@@ -29,35 +29,35 @@ import java.util.function.Consumer;
 public class CartService {
 
     /**
-     * Прокси для обращения в продуктовый сервис
+     * Proxy for contacting the grocery service.
      */
     private final ProductServiceIntegration productsService;
 
     /**
-     * Прокси для обращения в сервис Аналитики.
+     * Proxy for accessing the Analytics service.
      */
     private final AnalitServiceIntegration analitService;
 
     /**
-     * Шаблон для работы с Redis.
+     * Template for working with Redis.
      */
     private final RedisTemplate<String, Object> redisTemplate;
 
     /**
-     * Префикс для каждой корзины
+     * Prefix for each basket.
      */
     @Value("${utils.cart.prefix}")
     private String cartPrefix;
 
     /**
-     * Шаблон для отправки сообщений в шину обмена данными кафки.
+     * A template for sending messages to the kafka data exchange bus.
      */
     @Qualifier(value = "KafkaAnalit")
     @Autowired
     private KafkaTemplate<Long, ProductDto> kafkaTemplate;
 
     /**
-     * Выдает уникальный номер корзины с суфиксом.
+     * Issues a unique bucket number with a suffix.
      * @param suffix
      * @return String
      */
@@ -66,8 +66,8 @@ public class CartService {
     }
 
     /**
-     * Возвращает рандомно сгенерированную строку, используемую как
-     * уникальный индификатор корзины.
+     * Returns a randomly generated string used as
+     * unique basket identifier.
      * @return String
      */
     public String generateCartUuid() {
@@ -75,7 +75,7 @@ public class CartService {
     }
 
     /**
-     * По уникальному ключу корзины достает из Redis объект корзины.
+     * By the unique key of the basket, it takes out the basket object from Redis.
      * @param cartKey
      * @return
      */
@@ -87,8 +87,8 @@ public class CartService {
     }
 
     /**
-     * Добавление продукта в корзину и отправка сообщения через
-     * кафку в сервис аналитики о добавлении продукта в корзину.
+     * Adding a product to the cart and sending a message via
+     * kafka to the analytics service about adding a product to the cart.
      * @param cartKey
      * @param productId
      */
@@ -102,18 +102,37 @@ public class CartService {
         kafkaTemplate.flush();
     }
 
+    /**
+     * Clears the trash.
+     * @param cartKey
+     */
     public void clearCart(String cartKey) {
         execute(cartKey, Cart::clear);
     }
 
+    /**
+     * Removes an item from the trash.
+     * @param cartKey
+     * @param productId
+     */
     public void removeItemFromCart(String cartKey, Long productId) {
         execute(cartKey, c -> c.remove(productId));
     }
 
+    /**
+     * Reduces the amount of product.
+     * @param cartKey
+     * @param productId
+     */
     public void decrementItem(String cartKey, Long productId) {
         execute(cartKey, c -> c.decrement(productId));
     }
 
+    /**
+     * Combines the guest basket with the basket of the registered user.
+     * @param userCartKey
+     * @param guestCartKey
+     */
     public void merge(String userCartKey, String guestCartKey) {
         Cart guestCart = getCurrentCart(guestCartKey);
         Cart userCart = getCurrentCart(userCartKey);
@@ -122,12 +141,22 @@ public class CartService {
         updateCart(userCartKey, userCart);
     }
 
+    /**
+     * Executes a command for the bucket.
+     * @param cartKey
+     * @param action
+     */
     private void execute(String cartKey, Consumer<Cart> action) {
         Cart cart = getCurrentCart(cartKey);
         action.accept(cart);
         redisTemplate.opsForValue().set(cartKey, cart);
     }
 
+    /**
+     * Updates the bucket object in the Redis database.
+     * @param cartKey
+     * @param cart
+     */
     public void updateCart(String cartKey, Cart cart) {
         redisTemplate.opsForValue().set(cartKey, cart);
     }

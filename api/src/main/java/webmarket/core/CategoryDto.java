@@ -2,12 +2,21 @@ package webmarket.core;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+/**
+ * Product Category model.
+ */
 @Schema(description = "Модель категории товаров")
 public class CategoryDto {
 
+   /**
+    * Category ID.
+    */
    @Schema(description = "ID категории", example = "1")
    private Long id;
 
+   /**
+    * Category name.
+    */
    @Schema(description = "Наименование категории", required = true, example = "Техника")
    private String name;
 

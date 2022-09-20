@@ -15,7 +15,7 @@ import reactor.netty.tcp.TcpClient;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Определяет настройки для сервиса.
+ * Defines the settings for the service.
  */
 @Configuration
 public class AppConfig {
@@ -26,19 +26,19 @@ public class AppConfig {
     }
 
     /**
-     * URL для соединения с сервисом аналитики.
+     * URL for connecting to the analytics service.
      */
     @Value("${integrations.analit-service.url}")
     private String analyticServiceUrl;
 
     /**
-     * URL для соединения с Core сервисом.
+     * URL for connecting to the Core service.
      */
     @Value("${integrations.core-service.url}")
     private String coreServiceUrl;
 
     /**
-     * Настройки клиента для запросов в сервис аналитики.
+     * Client settings for requests to the analytics service.
      * @return WebClient
      */
     @Bean("analyticServiceWebClient")
@@ -59,7 +59,7 @@ public class AppConfig {
     }
 
     /**
-     * Настройки клиента для запросов в Core сервис.
+     * Client settings for requests to the Core service.
      * @return WebClient
      */
     @Bean("coreServiceWebClient")

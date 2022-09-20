@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import webmarket.exceptions.AppError;
 
 /**
- * Контроллер с Энд-поинтом для получения токена пользователя.
+ * A controller with an Endpoint for receiving a user token.
  */
 @RestController
 @RequiredArgsConstructor
@@ -30,6 +30,12 @@ public class AuthController {
     private final JwtTokenUtil jwtTokenUtil;
     private final AuthenticationManager authenticationManager;
 
+    /**
+     * Request to receive a user token.
+     * http://localhost:5555/auth
+     * @param authRequest
+     * @return
+     */
     @PostMapping("/auth")
     @Operation(
             summary = "Запрос на получение токена пользователя.",

@@ -1,18 +1,18 @@
 package webmarket.exceptions;
 
 /**
- * Класс обертка, объект класса создается для отправки на фронт после
- * перехвата исключения глобальным перехватчиком исключений.
+ * Wrapper class, a class object is created to be sent to the front after
+ * interception of an exception by a global exception interceptor.
  */
 public class AppError {
 
     /**
-     * Код ошибки исключения.
+     * Exception error code.
      */
     private int statusCode;
 
     /**
-     * Сообщение от исключения.
+     * The message from the exception.
      */
     private String message;
 

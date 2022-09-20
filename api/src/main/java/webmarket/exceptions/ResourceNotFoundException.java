@@ -1,7 +1,7 @@
 package webmarket.exceptions;
 
 /**
- * Исключение выбрасывается, если не найден ресурс из БД.
+ * An exception is thrown if a resource from the database is not found.
  */
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

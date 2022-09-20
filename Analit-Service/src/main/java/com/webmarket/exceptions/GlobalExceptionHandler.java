@@ -12,14 +12,14 @@ import webmarket.exceptions.BadConnectionServiceException;
 import java.net.ConnectException;
 
 /**
- * Глобальный перехватчик исключений. Оборачивает исключения в ResponseEntity<> с кодом ошибки.
+ * Global exception interceptor. Wraps exceptions in ResponseEntity<> with an error code.
  */
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
 
     /**
-     * Перехватчик исключения CHttpServerErrorException.InternalServerError.
+     * Exception interceptor  HttpServerErrorException.Internal Server Error.
      * @param e
      * @return
      */
@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Перехватчик исключения ConnectException.
+     * Exception Interceptor ConnectException.
      * @param e
      * @return ResponseEntity
      */

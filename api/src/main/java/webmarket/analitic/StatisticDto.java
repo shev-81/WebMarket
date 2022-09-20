@@ -3,19 +3,19 @@ package webmarket.analitic;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
- * DTO объект пересылаемый между сервисом статистики и сервисом корзины.
+ * DTO is an object sent between the statistics service and the bucket service.
  */
 @Schema(description = "Модель продукта в аналитике.")
 public class StatisticDto {
 
     /**
-     * Имя продукта.
+     * Product name.
      */
     @Schema(description = "Имя продукта", required = true)
     private String nameProduct;
 
     /**
-     * Колличество взятое из корзины.
+     * The quantity taken from the basket.
      */
     @Schema(description = "Количество продуктов", required = true)
     private Integer count;

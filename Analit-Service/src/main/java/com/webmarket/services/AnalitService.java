@@ -17,9 +17,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Сервис регистрирует в репозитарии продукты которые добавляет пользователь.
- * Если тип продукта уже есть в репозитарии то просто увеличивается его статистическое колличество.
- * Сервис каждые 10 секунд опрашивает корзину и собирает из нее данные.
+ * The service registers in the repository the products that the user adds.
+ * If the product type is already in the repository, then its statistical quantity simply increases.
+ * The service polls the basket every 10 seconds and collects data from it.
  * @see AnalitRepository
  * @see RestTemplate
  */
@@ -28,18 +28,18 @@ import java.util.stream.Collectors;
 public class AnalitService {
 
     /**
-     * Адресс сервиса корзины.
+     * The address of the bucket service.
      */
     @Value("${integrations.cart-service.url}")
     private String cartServiceUrl;
 
     /**
-     * Репозитарий статистики.
+     * Statistics repository.
      */
     private final AnalitRepository analitRepository;
 
     /**
-     * Список продуктов из 10 позицый самых востребованных покупателями.
+     * A list of products from the 10 positions most in demand by customers.
      */
     private List<StatisticDto> listProduct;
 
@@ -53,7 +53,7 @@ public class AnalitService {
     }
 
     /**
-     * Регистрирует список продуктов, полученный от сервиса корзины, в базе данных.
+     * Registers the list of products received from the shopping cart service in the database.
      * @param product
      */
     @Transactional
@@ -68,8 +68,8 @@ public class AnalitService {
     }
 
     /**
-     * Каждые 10 секунд обновляет данные в списке самых востребованных товаров. Наличие запроса, по сути пинга воспринимается сервисом
-     * корзины как команда для формирования ответа и очищения своего временного списка востребованных товаров.
+     * Updates the data in the list of the most popular products every 10 seconds. The presence of a request, in fact, ping is perceived by the service
+     * baskets as a team to form a response and clear your temporary list of demanded goods.
      */
     @Scheduled(fixedDelay = 10000)
     public void requestData(){

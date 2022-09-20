@@ -5,42 +5,81 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Order Model.
+ */
 @Schema(description = "Модель заказа")
 public class OrderDto {
 
+    /**
+     * Order ID.
+     */
     @Schema(description = "ID заказа", required = true, example = "1")
     private Long id;
 
+    /**
+     * User's nickname.
+     */
     @Schema(description = "Ник пользователя", required = true, example = "user")
     private String username;
 
+    /**
+     * last name first name patronymic.
+     */
     @Schema(description = "Фамилия Имя Отчество", required = true, example = "Шаповалов Иван Сергеевич")
     private String fio;
 
+    /**
+     * List of items in the order.
+     */
     @Schema(description = "Список позиций в заказе", required = true)
     private List<OrderItemDto> items;
 
+    /**
+     * Total order price.
+     */
     @Schema(description = "Итоговая цена заказа", required = true, example = "122.21")
     private BigDecimal totalPrice;
 
+    /**
+     * Postal code.
+     */
     @Schema(description = "Почтовый индекс", required = true, example = "г. Москва")
     private String postalCode;
 
+    /**
+     * City.
+     */
     @Schema(description = "Город", required = true, example = "г. Москва")
     private String adminAreaTwoTown;
 
+    /**
+     * Street.
+     */
     @Schema(description = "Улица", required = true, example = "Ул. Покровка")
     private String addressLineOneStreet;
 
+    /**
+     * Apartment number.
+     */
     @Schema(description = "Номер апартаментов", required = true, example = "35/17")
     private String addressLineTwoApartmentNumber;
 
+    /**
+     * Telephone.
+     */
     @Schema(description = "Телефон", required = true, example = "8(903)495-12-23")
     private String phone;
 
+    /**
+     * E-mail.
+     */
     @Schema(description = "E-mail", required = true, example = "vasya-99@mail.ru")
     private String email;
 
+    /**
+     * Order status.
+     */
     @Schema(description = "Статус заказа", required = true, example = "PAID")
     private String status;
 

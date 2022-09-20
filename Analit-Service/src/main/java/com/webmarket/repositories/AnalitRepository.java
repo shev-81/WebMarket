@@ -9,28 +9,28 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Репозитарий для хранения статистики по самым востребованным товарам (добавляемым в корзину покупателями.)
+ * A repository for storing statistics on the most popular products (added to the cart by customers.)
  */
 @Repository
 public interface AnalitRepository extends CrudRepository<Statistic, Integer> {
 
     /**
-     * Запрос получения всех продуктов.
+     * Request to receive all products.
      * @return список продуктов.
      */
     @Query("select s from Statistic s")
     List<Statistic> getAll ();
 
     /**
-     * Запрос на получение статистики продукиа по имени продукта.
+     * Request to get product statistics by product name.
      * @param nameProduct
-     * @return продукт по соответствию имени.
+     * @return product by matching the name.
      */
     @Query("select s from Statistic s where s.nameProducts = :nameProduct")
     Optional<Statistic> findProductByName(String nameProduct);
 
     /**
-     * Выбирает последние 10 записей продуктов отсортированные по востребованности.
+     * Selects the last 10 product records sorted by demand.
      * @return
      */
     @Query(value = "select * from statistic order by count_visits desc limit 10", nativeQuery = true)

@@ -10,15 +10,21 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Модель корзины.
+ * Basket model.
  */
 @Data
 @Schema(description = "Корзина продуктов")
 public class Cart {
 
+    /**
+     * List of products.
+     */
     @Schema(description = "Список продуктов", required = true)
     private List<CartItem> items;
 
+    /**
+     * Basket price.
+     */
     @Schema(description = "Цена корзины", required = true, example = "122.21")
     private BigDecimal totalPrice;
 
@@ -27,7 +33,7 @@ public class Cart {
     }
 
     /**
-     * Добавляет продукт в корзину.
+     * Adds the product to the cart.
      * @param productDto
      */
     public void add(ProductDto productDto) {
@@ -50,7 +56,7 @@ public class Cart {
     }
 
     /**
-     * Уменьшает колличество продуктов, в позиции продукта.
+     * Reduces the number of products in the product position.
      * @param productId
      */
     public void decrement(Long productId) {
@@ -69,7 +75,7 @@ public class Cart {
     }
 
     /**
-     * Удаляет продукт из корзины.
+     * Removes a product from the shopping cart.
      * @param productId
      */
     public void remove(Long productId) {
@@ -77,13 +83,16 @@ public class Cart {
         recalculate();
     }
 
+    /**
+     * Clears the trash.
+     */
     public void clear() {
         items.clear();
         totalPrice = BigDecimal.ZERO;
     }
 
     /**
-     * Делает перерасчет итогвой стоимости корзины.
+     * Recalculates the total cost of the basket.
      */
     private void recalculate() {
         totalPrice = BigDecimal.ZERO;
@@ -93,8 +102,8 @@ public class Cart {
     }
 
     /**
-     * Объединяет данные из корзины не зарегистрированного пользователя
-     * с корзиной пользователя прошедшего регистрацию.
+     * Combines data from the trash of an unregistered user
+     * with the basket of the registered user.
      * @param another
      */
     public void merge(Cart another) {

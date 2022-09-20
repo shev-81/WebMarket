@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 
 /**
- * Сущность описывающаяя пользователя.
+ * An entity describing the user.
  */
 @Entity
 @Data
@@ -21,31 +21,31 @@ public class User {
     private Long id;
 
     /**
-     * Имя.
+     * Name.
      */
     @Column(name = "username")
     private String username;
 
     /**
-     * Пароль.
+     * Password.
      */
     @Column(name = "password")
     private String password;
 
     /**
-     * Фио.
+     * Last name.
      */
     @Column(name = "fio")
     private String fio;
 
     /**
-     * Емайл.
+     * email.
      */
     @Column(name = "email")
     private String email;
 
     /**
-     * Телефон.
+     * phone.
      */
     @Column(name = "phone")
     private String phone;
