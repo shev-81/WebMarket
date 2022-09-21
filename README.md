@@ -1,5 +1,5 @@
-<h1 align="center">WebMarket - Интернет магазин на микросервисной архитектуре. 
-<h3 align="center">Spring Boot, REST, Docker, Kafka</h3>
+<h1 align="center">Интернет магазин. 
+<h3 align="center"> на микросервисной архитектуре - Spring Boot, REST, Docker, Kafka</h3>
 
 <a href="https://shev-81.github.io/WebMarket/"><img src="https://img.shields.io/badge/Cloud-JavaDoc-green"/>  </a>
 
