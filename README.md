@@ -1,7 +1,7 @@
 <h1 align="center">Интернет магазин. 
 <h3 align="center"> на микросервисной архитектуре - Spring Boot, REST, Docker, Kafka</h3>
 
-<a href="https://shev-81.github.io/WebMarket/"><img src="https://img.shields.io/badge/Cloud-JavaDoc-green"/>  </a>
+<a href="https://shev-81.github.io/WebMarket/"><img src="https://img.shields.io/badge/WebMarket-JavaDoc-green"/>  </a>
 
 ### Реализация на Spring Boot несколько микросервисов.
 Реализация на стеке REST + Angular технологий. В проекте использованы несколько баз данных в разных MS: MySQL, Postgres, Redis.
