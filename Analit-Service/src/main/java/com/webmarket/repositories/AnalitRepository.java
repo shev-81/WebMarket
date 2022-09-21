@@ -16,7 +16,7 @@ public interface AnalitRepository extends CrudRepository<Statistic, Integer> {
 
     /**
      * Request to receive all products.
-     * @return список продуктов.
+     * @return list of products.
      */
     @Query("select s from Statistic s")
     List<Statistic> getAll ();
@@ -31,7 +31,7 @@ public interface AnalitRepository extends CrudRepository<Statistic, Integer> {
 
     /**
      * Selects the last 10 product records sorted by demand.
-     * @return
+     * @return List
      */
     @Query(value = "select * from statistic order by count_visits desc limit 10", nativeQuery = true)
     List<Statistic> findLastTen();

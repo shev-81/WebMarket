@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/categories")
-@Tag(name = "Категории", description = "Методы работы с категориями продуктов")
+@Tag(name = "Categories", description = "Methods of working with product categories")
 public class CategoriesController {
     private final CategoryService categoryService;
     private final CategoryConverter categoryConverter;
@@ -31,14 +31,14 @@ public class CategoriesController {
     /**
      * Request for a list of product categories.
      * http://localhost:5555/core/api/v1/categories
-     * @return
+     * @return List
      */
     @GetMapping
     @Operation(
-            summary = "Запрос на получение списка категорий товаров",
+            summary = "Request for a list of product categories",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(
                                     mediaType = "application/json",
                                     array = @ArraySchema(schema = @Schema(implementation = CategoryDto.class))

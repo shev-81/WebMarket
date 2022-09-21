@@ -5,28 +5,43 @@ import io.swagger.v3.oas.annotations.media.Schema;
 /**
  * The user's DTO.
  */
-@Schema(description = "Модель DTO пользователя.")
+@Schema(description = "The user's DTO.")
 public class UserDto {
 
-    @Schema(description = "ID пользователя", required = true, example = "3")
+    /**
+     * User ID
+     */
+    @Schema(description = "User ID", required = true, example = "3")
     private Long id;
 
-    @Schema(description = "Имя пользователя", required = true, example = "Иван")
+    /**
+     * Username
+     */
+    @Schema(description = "Username", required = true, example = "Ivan")
     private String name;
 
-    @Schema(description = "Фамилия пользователя", required = true, example = "Иванов")
+    /**
+     * User's last name
+     */
+    @Schema(description = "User's last name", required = true, example = "Ivanov")
     private String fio;
 
-    @Schema(description = "Роли пользователя", required = true, example = "ROLE_USER ROLE_ADMIN")
+    /**
+     * User roles
+     */
+    @Schema(description = "User roles", required = true, example = "ROLE_USER ROLE_ADMIN")
     private String roles;
 
-    @Schema(description = "E-mail пользователя", required = true, example = "shev-81@mail.ru")
+    /**
+     * E-mail
+     */
+    @Schema(description = "E-mail", required = true, example = "shev-81@mail.ru")
     private String mail;
 
-    @Schema(description = "Tel пользователя", required = true, example = "8(903)178-30-50")
+    @Schema(description = "User's Tel", required = true, example = "8(903)178-30-50")
     private String phone;
 
-    @Schema(description = "Пароль пользователя", required = true, example = "*******")
+    @Schema(description = "User password", required = true, example = "*******")
     private String pass;
 
     public UserDto() {

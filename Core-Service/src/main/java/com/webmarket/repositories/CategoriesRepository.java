@@ -15,7 +15,7 @@ public interface CategoriesRepository extends CrudRepository <Category, Long> {
 
     /**
      * Selection of all categories.
-     * @return
+     * @return List
      */
     @Query("select c from Category c")
     List<Category> getAll();
@@ -23,7 +23,7 @@ public interface CategoriesRepository extends CrudRepository <Category, Long> {
     /**
      * Selecting the Category Id by its name.
      * @param nameCategory
-     * @return
+     * @return Integer
      */
     @Query("select c.id from Category c WHERE c.name = :nameCategory")
     Integer findIdByName(String nameCategory);
@@ -31,7 +31,7 @@ public interface CategoriesRepository extends CrudRepository <Category, Long> {
     /**
      * Selecting a Category by its name.
      * @param nameCategory
-     * @return
+     * @return Category
      */
     @Query("select c from Category c WHERE c.name = :nameCategory")
     Category findByName(String nameCategory);

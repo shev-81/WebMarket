@@ -38,10 +38,10 @@ public class AuthController {
      */
     @PostMapping("/auth")
     @Operation(
-            summary = "Запрос на получение токена пользователя.",
+            summary = "Request to receive a user token.",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = ResponseEntity.class))
                     )
             }

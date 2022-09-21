@@ -19,7 +19,7 @@ import webmarket.dto.StringResponse;
 @Data
 @RequestMapping("/api/v1/cart")
 @RequiredArgsConstructor
-@Tag(name = "Корзина", description = "Методы работы с корзиной")
+@Tag(name = "Basket", description = "Methods of working with the basket")
 public class CartsController {
 
     /**
@@ -36,10 +36,10 @@ public class CartsController {
      */
     @GetMapping("/{uuid}")
     @Operation(
-            summary = "Запрос на получение существующей корзины",
+            summary = "Request to get an existing bucket",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = Cart.class))
                     )
             }
@@ -51,14 +51,14 @@ public class CartsController {
     /**
      * Request to create a bucket.
      * http://localhost:5555/cart/api/v1/cart/generate
-     * @return
+     * @return Cart
      */
     @GetMapping("/generate")
     @Operation(
-            summary = "Запрос на создание корзины",
+            summary = "Request to create a bucket",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = StringResponse.class))
                     )
             }
@@ -76,10 +76,10 @@ public class CartsController {
      */
     @GetMapping("/{uuid}/add/{productId}")
     @Operation(
-            summary = "Запрос на добавление продукта",
+            summary = "Request to add a product",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(schema = @Schema())
                     )
             }
@@ -97,10 +97,10 @@ public class CartsController {
      */
     @GetMapping("/{uuid}/decrement/{productId}")
     @Operation(
-            summary = "Запрос на уменьшение кол-ва продуктов",
+            summary = "Request to reduce the number of products",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(schema = @Schema())
                     )
             }
@@ -118,7 +118,7 @@ public class CartsController {
      */
     @GetMapping("/{uuid}/remove/{productId}")
     @Operation(
-            summary = "Запрос на удаление продукта",
+            summary = "Product Removal Request",
             responses = {
                     @ApiResponse(
                             description = "Успешный ответ", responseCode = "200",
@@ -138,10 +138,10 @@ public class CartsController {
      */
     @GetMapping("/{uuid}/clear")
     @Operation(
-            summary = "Запрос на очистку содержимого",
+            summary = "Request to clear the content",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(schema = @Schema())
                     )
             }
@@ -158,10 +158,10 @@ public class CartsController {
      */
     @GetMapping("/{uuid}/merge")
     @Operation(
-            summary = "Запрос на соединение корзин - корзины неавторизованного пользователя при его авторизации с существующей корзиной в БД",
+            summary = "Request to connect the baskets - baskets of an unauthorized user during authorization with an existing basket in the database",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(schema = @Schema())
                     )
             }
@@ -177,7 +177,7 @@ public class CartsController {
      * Returns the uuid of the bucket.
      * @param username
      * @param uuid
-     * @return
+     * @return String
      */
     private String getCurrentCartUuid(String username, String uuid) {
         if (username != null) {

@@ -16,7 +16,7 @@ public class CategoryConverter {
     /**
      * Converts a list of categories to a list of DTO categories.
      * @param categories
-     * @return
+     * @return List
      */
     public List<CategoryDto> entityToDto(List<Category> categories){
         List<CategoryDto> categoryDtoList = new ArrayList<>();
@@ -30,7 +30,7 @@ public class CategoryConverter {
      * Temporarily not used and throws.
      * @see UnsupportedOperationException
      * @param categoryDto
-     * @return
+     * @return Category
      */
     public Category dtoToEntity(CategoryDto categoryDto) {
         throw new UnsupportedOperationException();

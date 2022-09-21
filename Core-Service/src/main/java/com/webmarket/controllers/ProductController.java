@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/products")
-@Tag(name = "Продукты", description = "Методы работы с продуктами")
+@Tag(name = "Products", description = "Methods of working with products")
 public class ProductController {
 
     /**
@@ -59,10 +59,10 @@ public class ProductController {
      */
     @GetMapping
     @Operation(
-            summary = "Запрос на получение страницы продуктов.",
+            summary = "Request to receive a product page.",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = Page.class))
                     )
             }
@@ -89,15 +89,15 @@ public class ProductController {
      */
     @GetMapping("/{id}")
     @Operation(
-            summary = "Запрос на получение продукта по id",
+            summary = "Request to receive a product by id",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = ProductDto.class))
                     )
             }
     )
-    public ProductDto getProductById(@PathVariable @Parameter(description = "Идентификатор продукта", required = true) Long id) {
+    public ProductDto getProductById(@PathVariable @Parameter(description = "Product ID", required = true) Long id) {
         Product product = productService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product not found, id: " + id));
         return productConverter.entityToDto(product);
     }
@@ -109,10 +109,10 @@ public class ProductController {
      */
     @GetMapping("/all")
     @Operation(
-            summary = "Запрос на получение списка продуктов",
+            summary = "Request for a list of products",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(
                                     mediaType = "application/json",
                                     array = @ArraySchema(schema = @Schema(implementation = ProductDto.class))                            )
@@ -131,15 +131,15 @@ public class ProductController {
      */
     @PostMapping
     @Operation(
-            summary = "Запрос на добавление нового продукта в БД продуктов",
+            summary = "Request to add a new product to the product database",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = ProductDto.class))
                     )
             }
     )
-    public ProductDto saveProduct(@RequestBody @Parameter(description = "DTO продукта", required = true) ProductDto productDto) {
+    public ProductDto saveProduct(@RequestBody @Parameter(description = "Product DTO", required = true) ProductDto productDto) {
         productValidator.validate(productDto);
         productDto.setId(null);
         Product product = productConverter.dtoToEntity(productDto);
@@ -154,7 +154,7 @@ public class ProductController {
      */
     @Hidden
     @DeleteMapping("/{id}")
-    public void delProducts(@PathVariable @Parameter(description = "ID продукта", required = true) Long id) {
+    public void delProducts(@PathVariable @Parameter(description = "Product ID", required = true) Long id) {
         productService.delProdictById(id);
     }
 
@@ -166,15 +166,15 @@ public class ProductController {
      */
     @PutMapping
     @Operation(
-            summary = "Запрос на сохранение изменений у продукта в БД продуктов",
+            summary = "Request to save changes to the product in the product database",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = ProductDto.class))
                     )
             }
     )
-    public ProductDto updateProducts(@RequestBody @Parameter(description = "DTO продукта", required = true)ProductDto productDto) {
+    public ProductDto updateProducts(@RequestBody @Parameter(description = "Product DTO", required = true)ProductDto productDto) {
         productValidator.validate(productDto);
         Product product = productConverter.dtoToEntity(productDto);
         product = productService.save(product);

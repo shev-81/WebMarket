@@ -5,13 +5,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 /**
  * User Model.
  */
-@Schema(description = "Модель пользователя")
+@Schema(description = "User Model")
 public class ProfileDto {
 
     /**
      * Username.
      */
-    @Schema(description = "Имя пользователя", required = true, example = "Иван Сергеевич")
+    @Schema(description = "Username", required = true, example = "Ivan Sergeevich")
     private String username;
 
     public ProfileDto() {

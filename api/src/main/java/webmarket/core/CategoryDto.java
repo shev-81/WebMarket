@@ -5,19 +5,19 @@ import io.swagger.v3.oas.annotations.media.Schema;
 /**
  * Product Category model.
  */
-@Schema(description = "Модель категории товаров")
+@Schema(description = "Product category model")
 public class CategoryDto {
 
    /**
     * Category ID.
     */
-   @Schema(description = "ID категории", example = "1")
+   @Schema(description = "Category ID", example = "1")
    private Long id;
 
    /**
     * Category name.
     */
-   @Schema(description = "Наименование категории", required = true, example = "Техника")
+   @Schema(description = "Category name", required = true, example = "Technic")
    private String name;
 
    public CategoryDto() {

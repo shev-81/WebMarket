@@ -36,15 +36,15 @@ public class CartServiceIntegration {
     /**
      * Sends a request to the shopping cart service to receive the user's shopping cart.
      * @param username
-     * @return
+     * @return CartDto
      */
     public CartDto getUserCart(String username) {
         CartDto cart = cartServiceWebClient.get()
                 .uri("/api/v1/cart/0")
                 .header("username", username)
                 .retrieve()
-                .onStatus(HttpStatus::is4xxClientError, clientResponse -> Mono.error(new CartServiceIntegrationException("Выполнен некорректный запрос к сервису корзин")))
-                .onStatus(HttpStatus::is5xxServerError, clientResponse -> Mono.error(new CartServiceIntegrationException("Сервис корзин сломался")))
+                .onStatus(HttpStatus::is4xxClientError, clientResponse -> Mono.error(new CartServiceIntegrationException("An incorrect request to the shopping cart service was made")))
+                .onStatus(HttpStatus::is5xxServerError, clientResponse -> Mono.error(new CartServiceIntegrationException("The shopping cart service is broken")))
                 .bodyToMono(CartDto.class)
                 .block();
         return cart;

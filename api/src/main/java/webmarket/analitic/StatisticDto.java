@@ -5,19 +5,19 @@ import io.swagger.v3.oas.annotations.media.Schema;
 /**
  * DTO is an object sent between the statistics service and the bucket service.
  */
-@Schema(description = "Модель продукта в аналитике.")
+@Schema(description = "The product model in analytics.")
 public class StatisticDto {
 
     /**
      * Product name.
      */
-    @Schema(description = "Имя продукта", required = true)
+    @Schema(description = "Product Name", required = true)
     private String nameProduct;
 
     /**
      * The quantity taken from the basket.
      */
-    @Schema(description = "Количество продуктов", required = true)
+    @Schema(description = "Number of products", required = true)
     private Integer count;
 
     public StatisticDto(String nameProduct, Integer count) {

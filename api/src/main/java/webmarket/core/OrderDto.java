@@ -8,67 +8,67 @@ import java.util.List;
 /**
  * Order Model.
  */
-@Schema(description = "Модель заказа")
+@Schema(description = "Order Model")
 public class OrderDto {
 
     /**
      * Order ID.
      */
-    @Schema(description = "ID заказа", required = true, example = "1")
+    @Schema(description = "Order ID", required = true, example = "1")
     private Long id;
 
     /**
      * User's nickname.
      */
-    @Schema(description = "Ник пользователя", required = true, example = "user")
+    @Schema(description = "User's nickname", required = true, example = "user")
     private String username;
 
     /**
      * last name first name patronymic.
      */
-    @Schema(description = "Фамилия Имя Отчество", required = true, example = "Шаповалов Иван Сергеевич")
+    @Schema(description = "last name first name patronymic", required = true, example = "Shapovalov Ivan Sergeevich")
     private String fio;
 
     /**
      * List of items in the order.
      */
-    @Schema(description = "Список позиций в заказе", required = true)
+    @Schema(description = "List of items in the order", required = true)
     private List<OrderItemDto> items;
 
     /**
      * Total order price.
      */
-    @Schema(description = "Итоговая цена заказа", required = true, example = "122.21")
+    @Schema(description = "Total order price", required = true, example = "122.21")
     private BigDecimal totalPrice;
 
     /**
      * Postal code.
      */
-    @Schema(description = "Почтовый индекс", required = true, example = "г. Москва")
+    @Schema(description = "Postal code", required = true, example = "Moscow")
     private String postalCode;
 
     /**
      * City.
      */
-    @Schema(description = "Город", required = true, example = "г. Москва")
+    @Schema(description = "City", required = true, example = "Moscow")
     private String adminAreaTwoTown;
 
     /**
      * Street.
      */
-    @Schema(description = "Улица", required = true, example = "Ул. Покровка")
+    @Schema(description = "Street", required = true, example = "Pokrovka Street")
     private String addressLineOneStreet;
 
     /**
      * Apartment number.
      */
-    @Schema(description = "Номер апартаментов", required = true, example = "35/17")
+    @Schema(description = "Apartment number", required = true, example = "35/17")
     private String addressLineTwoApartmentNumber;
 
     /**
      * Telephone.
      */
-    @Schema(description = "Телефон", required = true, example = "8(903)495-12-23")
+    @Schema(description = "Telephone", required = true, example = "8(903)495-12-23")
     private String phone;
 
     /**
@@ -80,7 +80,7 @@ public class OrderDto {
     /**
      * Order status.
      */
-    @Schema(description = "Статус заказа", required = true, example = "PAID")
+    @Schema(description = "Order status.", required = true, example = "PAID")
     private String status;
 
 

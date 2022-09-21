@@ -9,7 +9,7 @@ import webmarket.exceptions.AppError;
 import webmarket.exceptions.ResourceNotFoundException;
 
 /**
- * Global exception interceptor. Wraps exceptions in ResponseEntity<> with an error code.
+ * Global exception interceptor. Wraps exceptions in ResponseEntity with an error code.
  */
 @ControllerAdvice
 @Slf4j

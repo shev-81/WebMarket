@@ -17,7 +17,7 @@ import webmarket.core.ProfileDto;
  */
 @RestController
 @RequestMapping("/api/v1/profile")
-@Tag(name = "Пользователи", description = "Методы работы с пользователями")
+@Tag(name = "Users", description = "Methods of working with users")
 public class ProfileController {
 
     /**
@@ -28,15 +28,15 @@ public class ProfileController {
      */
     @GetMapping
     @Operation(
-            summary = "Запрос на получение имени пользователя",
+            summary = "Request for a username",
             responses = {
                     @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
+                            description = "Successful response", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = ProfileDto.class))
                     )
             }
     )
-    public ProfileDto getCurrentUserInfo(@RequestHeader @Parameter(description = "Имя пользователя", required = true) String username) {
+    public ProfileDto getCurrentUserInfo(@RequestHeader @Parameter(description = "Username", required = true) String username) {
         return new ProfileDto(username);
     }
 }

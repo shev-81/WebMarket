@@ -12,7 +12,7 @@ import webmarket.exceptions.BadConnectionServiceException;
 import java.net.ConnectException;
 
 /**
- * Global exception interceptor. Wraps exceptions in ResponseEntity<> with an error code.
+ * Global exception interceptor. Wraps exceptions in ResponseEntity with an error code.
  */
 @ControllerAdvice
 @Slf4j
@@ -21,12 +21,12 @@ public class GlobalExceptionHandler {
     /**
      * Exception interceptor  HttpServerErrorException.Internal Server Error.
      * @param e
-     * @return
+     * @return ResponseEntity
      */
     @ExceptionHandler
     public ResponseEntity<BadConnectionServiceException> catchInternalServerError(HttpServerErrorException.InternalServerError e) {
         log.error(e.getMessage(), e);
-        return new ResponseEntity<>(new BadConnectionServiceException("Сервис не работает"), HttpStatus.SERVICE_UNAVAILABLE);
+        return new ResponseEntity<>(new BadConnectionServiceException("The service is not working"), HttpStatus.SERVICE_UNAVAILABLE);
     }
 
     /**
@@ -37,6 +37,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<BadConnectionServiceException> catchConnectException(ConnectException e) {
         log.error(e.getMessage(), e);
-        return new ResponseEntity<>(new BadConnectionServiceException("Сервис не работает"), HttpStatus.SERVICE_UNAVAILABLE);
+        return new ResponseEntity<>(new BadConnectionServiceException("The service is not working"), HttpStatus.SERVICE_UNAVAILABLE);
     }
 }

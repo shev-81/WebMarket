@@ -34,7 +34,7 @@ public class AppConfig {
 
     /**
      * Client rest template.
-     * @return
+     * @return RestTemplate
      */
     @Bean
     public RestTemplate userServiceClient(){
@@ -43,7 +43,7 @@ public class AppConfig {
 
     /**
      * Web client for requests to the shopping cart service.
-     * @return
+     * @return WebClient
      */
     @Bean
     public WebClient cartServiceWebClient() {
