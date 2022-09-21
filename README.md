@@ -1,6 +1,8 @@
 <h1 align="center">WebMarket
 <h3 align="center">Интернет Магазин на микросервисной архитектуре. (Spring Boot, REST, Docker, Kafka)</h3>
 
+<a href="https://shev-81.github.io/WebMarket/"><img src="https://img.shields.io/badge/Cloud-JavaDoc-green"/>  </a>
+
 ### Реализация на Spring Boot несколько микросервисов.
 Реализация на стеке REST + Angular технологий. В проекте использованы несколько баз данных в разных MS: MySQL, Postgres, Redis.
 Магазин имеет единую точку входа на GateWay где настроена маршрутизация для MS, на фронте настроена маршрутизация для перемещения 
