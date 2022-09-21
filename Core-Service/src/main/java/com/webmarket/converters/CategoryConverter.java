@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Конвертер сущности в ДТО и обратно.
+ * Entity converter to DTO and back.
  */
 @Component
 public class CategoryConverter {
 
     /**
-     * Конвертирует список категорий в список ДТО категорий.
+     * Converts a list of categories to a list of DTO categories.
      * @param categories
      * @return
      */
@@ -27,7 +27,7 @@ public class CategoryConverter {
     }
 
     /**
-     * Временно не используется и кидает.
+     * Temporarily not used and throws.
      * @see UnsupportedOperationException
      * @param categoryDto
      * @return

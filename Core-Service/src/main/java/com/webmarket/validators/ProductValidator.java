@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Валидатор полей продукта DTO
+ * Validator of product fields DTO
  */
 @Component
 public class ProductValidator {

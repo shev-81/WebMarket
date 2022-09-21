@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * Накопитель сообщений об ошибках.
+ * The accumulator of error messages.
  */
 @NoArgsConstructor
 @Data

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Ошибка валидации
+ * Validation error.
  */
 @Data
 public class ValidationException extends RuntimeException {

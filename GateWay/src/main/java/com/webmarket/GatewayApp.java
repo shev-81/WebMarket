@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // https://cloud.spring.io/spring-cloud-gateway/reference/html/
 
 /**
- * GateWay Service (BackEnd маршрутизация между MS магазина)
- * Настроена маршрутизация по MS магазина с проверкой валидности доступа.
+ * GateWay Service (BackEnd routing between the store's MS)
+ * Configured routing by the store's MS with access validation.
  */
 @SpringBootApplication
 public class GatewayApp {

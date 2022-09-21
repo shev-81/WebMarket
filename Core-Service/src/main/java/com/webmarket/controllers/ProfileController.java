@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import webmarket.core.ProfileDto;
 
+/**
+ * A controller for working with users.
+ */
 @RestController
 @RequestMapping("/api/v1/profile")
 @Tag(name = "Пользователи", description = "Методы работы с пользователями")
 public class ProfileController {
 
     /**
-     * Запрос на получение имени пользователя.
+     * Request to get a username.
+     * http://localhost:5555/core/api/v1/profile
      * @param username
      * @return
      */

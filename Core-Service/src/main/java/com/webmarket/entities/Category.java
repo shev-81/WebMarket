@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Сущность категории товаров.
+ * The essence of the product category.
  */
 @Data
 @Entity
@@ -23,13 +23,13 @@ public class Category {
     private Long id;
 
     /**
-     * Наименование.
+     * Name.
      */
     @Column(name = "name")
     private String name;
 
     /**
-     * Список продуктов в категории.
+     * List of products in the category.
      */
     @OneToMany (mappedBy = "category")
     private List<Product> products;

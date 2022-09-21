@@ -10,29 +10,29 @@ import org.springframework.context.annotation.PropertySource;
 import javax.annotation.PostConstruct;
 
 /**
- * Конфигурация PayPal
+ * PayPal Configuration.
  */
 @Configuration
 @PropertySource("secret.properties")
 public class PayPalConfig {
 
     /**
-     * Клиент Id выдается в личном кабинете PayPal, и представляет собой
-     * уникальный номер приложения в системе.
+     * The Client Id is issued in the PayPal personal account, and is
+     * unique application number in the system.
      */
     @Value("${paypal.client-id}")
     private String clientId;
 
     /**
-     * Секретный ключ PayPal выдается в личном кабинете PayPal, и представляет собой
-     * уникальный номер необходимый для авторизации приложения в системе.
+     * The PayPal secret key is issued in the PayPal personal account, and is
+     * a unique number required to authorize the application in the system.
      */
     @Value("${paypal.client-secret}")
     private String secret;
 
     /**
-     * Окружение PayPal, используется как объект DTO для передачи уникальных -
-     * номера приложения и секретного ключа.
+     * PayPal environment, used as a DTO object for transmitting unique -
+     * application numbers and secret key.
      */
     private PayPalEnvironment environment;
 
@@ -42,7 +42,7 @@ public class PayPalConfig {
     }
 
     /**
-     * Клиент PayPal
+     * PayPal Customer.
      * @return
      */
     @Bean

@@ -16,7 +16,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * Определяет методы работы с токенами пользователям.
+ * Defines the methods of working with tokens by the user.
  */
 @Component
 public class JwtTokenUtil {
@@ -27,9 +27,9 @@ public class JwtTokenUtil {
     private Integer jwtLifetime;
 
     /**
-     * Создание нового токена пользователю.
+     * Creating a new token for the user.
      * @param userDetails
-     * @return токен.
+     * @return token.
      */
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();

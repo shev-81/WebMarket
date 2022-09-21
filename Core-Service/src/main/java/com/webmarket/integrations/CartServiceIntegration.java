@@ -9,19 +9,19 @@ import reactor.core.publisher.Mono;
 import webmarket.cart.CartDto;
 
 /**
- * Интеграция с сервисом корзин.
+ * Integration with the shopping cart service.
  */
 @Component
 @RequiredArgsConstructor
 public class CartServiceIntegration {
 
     /**
-     * Клиент для запросов в сервис корзин.
+     * Client for requests to the shopping cart service.
      */
     private final WebClient cartServiceWebClient;
 
     /**
-     * Посылает запрос в сервис корзин, для очистки корзины пользователя.
+     * Sends a request to the shopping cart service to clear the user's trash.
      * @param username
      */
     public void clearUserCart(String username) {
@@ -34,7 +34,7 @@ public class CartServiceIntegration {
     }
 
     /**
-     * Посылает запрос в сервис корзин для получения корзины пользователя.
+     * Sends a request to the shopping cart service to receive the user's shopping cart.
      * @param username
      * @return
      */

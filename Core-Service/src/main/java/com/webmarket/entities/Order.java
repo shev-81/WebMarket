@@ -13,7 +13,7 @@ import java.util.List;
 import static com.webmarket.enums.StatusCode.GENERATED;
 
 /**
- * Сущность заказов.
+ * The essence of orders.
  */
 @Entity
 @Data
@@ -26,61 +26,61 @@ public class Order {
     private Long id;
 
     /**
-     * Имя пользователя.
+     * Username.
      */
     @Column(name = "username")
     private String username;
 
     /**
-     * Полная цена заказа.
-     */
-    @Column(name = "total_price")
-    BigDecimal totalPrice;
-
-    /**
-     * Почтовый код.
-     */
-    @Column(name = "postalcode")
-    String postalCode;
-
-    /**
-     * Адресс район.
-     */
-    @Column(name = "adminarea2_town")
-    String adminAreaTwoTown;
-
-    /**
-     * Адресс улица.
-     */
-    @Column(name = "addressline1_street")
-    String addressLineOneStreet;
-
-    /**
-     * Квартира
-     */
-    @Column(name = "addressline2_apartment_n")
-    String addressLineTwoApartmentNumber;
-
-    /**
-     * ФИО
+     * LastName
      */
     @Column(name = "fio")
     String fio;
 
     /**
-     * Телефон.
+     * The full price of the order.
+     */
+    @Column(name = "total_price")
+    BigDecimal totalPrice;
+
+    /**
+     * Postal code.
+     */
+    @Column(name = "postalcode")
+    String postalCode;
+
+    /**
+     * Address district.
+     */
+    @Column(name = "adminarea2_town")
+    String adminAreaTwoTown;
+
+    /**
+     * Address street.
+     */
+    @Column(name = "addressline1_street")
+    String addressLineOneStreet;
+
+    /**
+     * Flat
+     */
+    @Column(name = "addressline2_apartment_n")
+    String addressLineTwoApartmentNumber;
+
+    /**
+     * Telephone.
      */
     @Column(name = "phone")
     String phone;
 
     /**
-     * Емайл.
+     * email.
      */
     @Column(name = "email")
     String email;
 
     /**
-     * Статус заказа определяется оплатой.
+     * The order status is determined by the payment.
      */
     @Column(name = "status")
     String status;

@@ -174,7 +174,7 @@ public class CartsController {
     }
 
     /**
-     * Возвращает uuid корзины.
+     * Returns the uuid of the bucket.
      * @param username
      * @param uuid
      * @return

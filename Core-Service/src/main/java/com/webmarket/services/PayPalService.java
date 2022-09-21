@@ -12,19 +12,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Основная задача сервиса сформировать запрос на основании данных из заказа пользователя.
+ * The main task of the service is to form a request based on data from the user's order.
  */
 @Service
 @RequiredArgsConstructor
 public class PayPalService {
 
     /**
-     * Сервис заказов.
+     * Order service.
      */
     private final OrderService orderService;
 
     /**
-     * Создает запрос в систему PayPal на основании данных полученных из заказа пользователя.
+     * Creates a request to the PayPal system based on the data received from the user's order.
      * @param orderId
      * @return
      */

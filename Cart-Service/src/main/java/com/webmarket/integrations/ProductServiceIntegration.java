@@ -11,14 +11,14 @@ import webmarket.core.ProductDto;
 import java.util.Optional;
 
 /**
- * Отвечает за интеграцию с Core сервисом.
+ * Responsible for integration with the Core service.
  */
 @Data
 @Component
 public class ProductServiceIntegration {
 
     /**
-     * Клиент для запросов в Core сервис.
+     * Client for requests to the Core service.
      */
     @Autowired
     @Qualifier("coreServiceWebClient")
@@ -29,7 +29,7 @@ public class ProductServiceIntegration {
     private String productServiceUrl;
 
     /**
-     * Посылает запрос в Core сервис запрашиваает продукт по его Id.
+     * Sends a request to the Core service requests the product by its Id.
      * @param id
      * @return
      */

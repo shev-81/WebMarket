@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Сервис работы с категориями.
+ * Service for working with categories.
  */
 @Service
 @RequiredArgsConstructor
@@ -17,7 +17,7 @@ public class CategoryService {
     private final CategoriesRepository categoriesRepository;
 
     /**
-     * Возвращает Список всех категорий
+     * Returns a list of all categories.
      * @return
      */
     public List<Category> getAllCategories(){
@@ -25,7 +25,7 @@ public class CategoryService {
     }
 
     /**
-     * Возвращает категорию по ее имени.
+     * Returns a category by its name.
      * @param nameCategory
      * @return
      */
@@ -34,7 +34,7 @@ public class CategoryService {
     }
 
     /**
-     * Возвращает Id категории по ее имени.
+     * Returns the Category Id by its name.
      * @param nameCategory
      * @return
      */

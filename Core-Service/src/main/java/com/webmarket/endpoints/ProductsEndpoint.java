@@ -12,7 +12,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import java.util.List;
 
 /**
- * Энд поит Веб сервиса SOAP для получения категории по имени.
+ * The endpoint of the SOAP Web service for getting a category by name.
  */
 @Endpoint
 @RequiredArgsConstructor
@@ -21,7 +21,7 @@ public class ProductsEndpoint {
     private final ProductService productService;
 
     /**
-     * Получение продукта по имени.
+     * Getting the product by name.
      * @param request
      * @return
      */
@@ -39,7 +39,7 @@ public class ProductsEndpoint {
     }
 
     /**
-     * Получение списка продуктов.
+     * Getting a list of products.
      * @param request
      * @return
      */

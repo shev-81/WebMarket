@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * Утилиты парсят токен на составляющие и дают ответ на 2 вопроса, Истек ли временной
- * буфер действия токена и действителен ли токен в данный момент.
+ * Utilities parse the token into components and give an answer to 2 questions, whether the temporary
+ * buffer of the token has expired and whether the token is valid at the moment.
  */
 @Component
 public class JwtUtil {
@@ -25,7 +25,7 @@ public class JwtUtil {
     }
 
     /**
-     * Истек ли буфер времени действия ключа.
+     * Whether the key expiration buffer has expired.
      * @param token
      * @return
      */
@@ -34,7 +34,7 @@ public class JwtUtil {
     }
 
     /**
-     * Действителен ли токен.
+     * Whether the token is valid.
      * @param token
      * @return
      */

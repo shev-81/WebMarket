@@ -5,13 +5,13 @@ import org.springframework.stereotype.Component;
 import webmarket.core.OrderItemDto;
 
 /**
- * Конвертер сущности в ДТО и обратно.
+ * Entity converter to DTO and back.
  */
 @Component
 public class OrderItemsConverter {
 
     /**
-     * Конвертирует ордерИтем ДТО в сущность ордерИтем.
+     * Converts an order And that is in essence an order item.
      * @param orderItemDto
      * @return
      */
@@ -20,7 +20,7 @@ public class OrderItemsConverter {
     }
 
     /**
-     * Конвертирует сущность ордерИтем в ордерИтем ДТО.
+     * Converts the entity OrderItem into an order item TO.
      * @param orderItem
      * @return
      */

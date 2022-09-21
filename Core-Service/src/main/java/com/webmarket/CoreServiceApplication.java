@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 /**
- * Работает с товарами и их категориями, заказами пользователей и взаимодействием
- * с платежной системой PayPal. В сервисе настроена интеграция с корзиной пользователя
- * (MS Cart Service), а так же с PayPal. Реализованн SOAP API для получения списка
- * товаров и списка категорий товаров. Общение межу сервисами через Web Client.
- * Данные о товарах и заказах хранятся в БД Postgres.
+ * Works with products and their categories, user orders and interactions
+ * with the PayPal payment system. The service has configured integration with the user's shopping cart
+ * (* (MS Card Service), as well as with PayPal. Implemented SOAP API for getting a list
+ * products and a list of product categories. Communication between services via the Web Client.
+ * Data about products and orders are stored in the Postgres database.
  */
 @SpringBootApplication
 @PropertySource("secret.properties")

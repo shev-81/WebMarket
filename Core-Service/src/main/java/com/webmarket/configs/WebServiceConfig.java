@@ -13,7 +13,7 @@ import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
 /**
- * Конфигурация SOAP
+ * SOAP Configuration
  */
 @EnableWs
 @Configuration

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * Сущность продукта.
+ * The essence of the product.
  */
 @Entity
 @Table(name = "products")
@@ -23,13 +23,13 @@ public class Product {
     private Long id;
 
     /**
-     * Наименование продукта.
+     * Product Name.
      */
     @Column(name = "name")
     private String name;
 
     /**
-     * Цена продукта.
+     * Product Price.
      */
     @Column(name = "price")
     private BigDecimal price;

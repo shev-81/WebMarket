@@ -5,7 +5,7 @@ import com.webmarket.entities.Product;
 import org.springframework.data.jpa.domain.Specification;
 
 /**
- * Спецификации для фильтрации Продуктов.
+ * Specifications for filtering Products.
  */
 public class ProductSpecifications {
     public static Specification<Product> scoreGreaterOrEqualsThan(Integer price) {

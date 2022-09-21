@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Конфигурация Swager
+ * Swager Configuration.
  */
 @Configuration
 public class OpenApiConfig {

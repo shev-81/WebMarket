@@ -11,14 +11,14 @@ import webmarket.exceptions.BadConnectionServiceException;
 import webmarket.exceptions.ResourceNotFoundException;
 
 /**
- * Глобальный перехватчик исключений. Оборачивает исключения в ResponseEntity<> с кодом ошибки.
+ * Global exception interceptor. Wraps exceptions in ResponseEntity<> with an error code.
  */
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
 
     /**
-     * Перехватчик исключения ResourceNotFoundException.
+     * Exception interceptor ResourceNotFoundException.
      * @param e ResourceNotFoundException
      * @return
      */
@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Перехватчик исключения BadConnectionServiceException.
+     * Bad Connection Service Exception Exception interceptor.
      * @param e BadConnectionServiceException
      * @return
      */

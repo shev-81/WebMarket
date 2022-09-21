@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * Сущность позиции в заказе.
+ * The essence of the item in the order.
  */
 @Entity
 @Table(name = "order_items")
@@ -29,19 +29,19 @@ public class OrderItem {
     private Product product;
 
     /**
-     * Количество.
+     * Quantity.
      */
     @Column(name = "quantity")
     private Integer quantity;
 
     /**
-     * Цена за единицу.
+     * Price per unit.
      */
     @Column(name = "price_per_product")
     private BigDecimal pricePerProduct;
 
     /**
-     * Цена позиции.
+     * Position price.
      */
     @Column(name = "price")
     private BigDecimal price;

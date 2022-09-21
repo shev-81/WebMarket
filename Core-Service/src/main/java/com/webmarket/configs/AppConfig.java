@@ -17,8 +17,8 @@ import reactor.netty.tcp.TcpClient;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Конфигурационный класс настройки приложения, свойства для конфигураций
- * подтягиваются из конфигурационного файла с помощью @EnableConfigurationProperties.
+ * Configuration class application settings, properties for configurations
+ * are pulled from the configuration file using @EnableConfigurationProperties.
  */
 @Configuration
 @EnableConfigurationProperties(
@@ -28,12 +28,12 @@ import java.util.concurrent.TimeUnit;
 public class AppConfig {
 
     /**
-     * Является объектом связывающим свои свойства в с аналогичными свойствами в файле свойств проекта.
+     * Is an object linking its properties in with similar properties in the project properties file.
      */
     private final CartServiceIntegrationProperties cartServiceIntegrationProperties;
 
     /**
-     * Клиент рест темплайте.
+     * Client rest template.
      * @return
      */
     @Bean
@@ -42,7 +42,7 @@ public class AppConfig {
     }
 
     /**
-     * Веб клиент для запросов в сервис корзин.
+     * Web client for requests to the shopping cart service.
      * @return
      */
     @Bean

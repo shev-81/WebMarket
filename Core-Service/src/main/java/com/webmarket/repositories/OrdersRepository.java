@@ -8,13 +8,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Репозитарий заказов
+ * Repository of orders.
  */
 @Repository
 public interface OrdersRepository extends JpaRepository<Order, Long> {
 
     /**
-     * Выбор всех заказов по имени пользователя.
+     * Selecting all orders by user name.
      * @param username
      * @return
      */

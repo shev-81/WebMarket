@@ -12,21 +12,21 @@ import webmarket.core.ProductDto;
 import java.util.ArrayList;
 
 /**
- * Отвечает за интеграцию с сервисом Аналитики.
+ * Responsible for integration with the Analytics service.
  */
 @Data
 @Component
 public class AnalitServiceIntegration {
 
     /**
-     * Клиент для запросов в сервис аналитики.
+     * Client for requests to the analytics service.
      */
     @Autowired
     @Qualifier("analyticServiceWebClient")
     private WebClient analitServiceWebClient;
 
     /**
-     * Посылает запрос в сервис аналитики для регистрации товара.
+     * Sends a request to the analytics service for product registration.
      * @param productDto
      */
     public void registration(ArrayList <ProductDto> productDto){

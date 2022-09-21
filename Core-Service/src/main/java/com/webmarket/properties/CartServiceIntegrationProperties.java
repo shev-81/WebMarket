@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
 
 /**
- * Шаблон для определния свойств.
+ * Template for defining properties.
  */
 @ConstructorBinding
 @ConfigurationProperties(prefix = "integrations.cart-service")

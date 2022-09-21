@@ -18,7 +18,7 @@ import webmarket.core.CategoryDto;
 import java.util.List;
 
 /**
- * Контроллер для работы с категориями.
+ * A controller for working with categories.
  */
 @RestController
 @RequiredArgsConstructor
@@ -29,7 +29,8 @@ public class CategoriesController {
     private final CategoryConverter categoryConverter;
 
     /**
-     * Запрос на получение списка категорий товаров.
+     * Request for a list of product categories.
+     * http://localhost:5555/core/api/v1/categories
      * @return
      */
     @GetMapping

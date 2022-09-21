@@ -13,24 +13,24 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Сервис продуктов рабоатет с продуктами магазина.
+ * The product service works with the store's products.
  */
 @Service
 @RequiredArgsConstructor
 public class ProductService {
 
     /**
-     * Продуктовый репозиторий.
+     * Grocery repository.
      */
     private final ProductRepository productRepository;
 
     /**
-     * Сервис категорий товаров.
+     * Service of product categories.
      */
     private final CategoryService categoryService;
 
     /**
-     * Возвращает старницу с продуктами.
+     * Returns a page with products.
      * @param minScore
      * @param maxScore
      * @param partName
@@ -57,7 +57,7 @@ public class ProductService {
     }
 
     /**
-     * Возвращает продукт из репозитария по его имени.
+     * Returns a product from the repository by its name.
      * @param name
      * @return
      */
@@ -66,7 +66,7 @@ public class ProductService {
     }
 
     /**
-     * Возвращает список всех продуктов из репозитария.
+     * Returns a list of all products from the repository.
      * @return
      */
     public List<Product> findAll() {
@@ -74,7 +74,7 @@ public class ProductService {
     }
 
     /**
-     * Возвращает продукт по его Id.
+     * Returns the product by its Id.
      * @param id
      * @return
      */
@@ -83,7 +83,7 @@ public class ProductService {
     }
 
     /**
-     * Удаляет продукт по его ID.
+     * Deletes a product by its ID.
      * @param id
      */
     public void delProdictById(Long id) {
@@ -91,7 +91,7 @@ public class ProductService {
     }
 
     /**
-     * Сохраняет продукт в Репозитарии.
+     * Saves the product in the Repository.
      * @param product
      * @return
      */

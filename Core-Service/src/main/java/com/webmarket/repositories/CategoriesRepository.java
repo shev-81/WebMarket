@@ -8,20 +8,20 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Репозитарий категорий.
+ * Category repository.
  */
 @Repository
 public interface CategoriesRepository extends CrudRepository <Category, Long> {
 
     /**
-     * Выбор всех категорий.
+     * Selection of all categories.
      * @return
      */
     @Query("select c from Category c")
     List<Category> getAll();
 
     /**
-     * Выбор Id категории по ее имени.
+     * Selecting the Category Id by its name.
      * @param nameCategory
      * @return
      */
@@ -29,7 +29,7 @@ public interface CategoriesRepository extends CrudRepository <Category, Long> {
     Integer findIdByName(String nameCategory);
 
     /**
-     * Выбор Категории по ее имени.
+     * Selecting a Category by its name.
      * @param nameCategory
      * @return
      */

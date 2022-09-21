@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Контроллер для работы с заказами.
+ * Controller for working with orders.
  */
 @RestController
 @RequestMapping("/api/v1/orders")
@@ -29,17 +29,18 @@ import java.util.stream.Collectors;
 public class OrdersController {
 
     /**
-     * Сервис заказов.
+     * Order service.
      */
     private final OrderService orderService;
 
     /**
-     * Конвертер сущностей.
+     * Entity converter.
      */
     private final OrderConverter orderConverter;
 
     /**
-     * Запрос на создание нового заказа.
+     * Request to create a new order.
+     * http://localhost:5555/core/api/v1/orders
      * @param username
      * @param orderDetailsDto
      */
@@ -60,7 +61,8 @@ public class OrdersController {
     }
 
     /**
-     * Запрос на получение списка заказов.
+     * Request for a list of orders.
+     * http://localhost:5555/core/api/v1
      * @param username
      * @return
      */
@@ -82,7 +84,8 @@ public class OrdersController {
     }
 
     /**
-     * Запрос на получение заказа по ID.
+     * Request to receive an order by ID.
+     * http://localhost:5555/core/api/v1/{id}
      * @param id
      * @return
      */

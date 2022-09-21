@@ -8,7 +8,7 @@ import webmarket.core.OrderDto;
 import java.util.stream.Collectors;
 
 /**
- * Конвертер сущности в ДТО и обратно.
+ * Entity converter to DTO and back.
  */
 @Component
 @RequiredArgsConstructor
@@ -17,7 +17,7 @@ public class OrderConverter {
     private final OrderItemsConverter orderItemConverter;
 
     /**
-     * Конвертирует заказ в ДТО заказ.
+     * Converts an order into a DTO order.
      * @param order
      * @return
      */
@@ -42,7 +42,7 @@ public class OrderConverter {
     }
 
     /**
-     * Временно не используется и кидает.
+     * Temporarily not used and throws.
      * @see UnsupportedOperationException
      * @param orderDto
      * @return

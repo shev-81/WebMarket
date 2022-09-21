@@ -22,7 +22,7 @@ import static com.webmarket.enums.StatusCode.PAID;
 
 
 /**
- * Сервис заказов, создает заказ на основании данных из корзины.
+ * The order service creates an order based on data from the shopping cart.
  */
 @Service
 @RequiredArgsConstructor
@@ -36,7 +36,7 @@ public class OrderService {
     private String authServiceUrl;
 
     /**
-     * Создает ззаказ на основании полученных данных.
+     * Creates an order based on the received data.
      * @param userName
      * @param orderDetailsDto
      */
@@ -69,7 +69,7 @@ public class OrderService {
     }
 
     /**
-     * Возвращает список заказов для пользователя.
+     * Returns a list of orders for the user.
      * @param username
      * @return
      */
@@ -78,7 +78,7 @@ public class OrderService {
     }
 
     /**
-     * Возвращает Заказ по его Id.
+     * Returns the Order by its Id.
      * @param id
      * @return
      */
@@ -87,7 +87,7 @@ public class OrderService {
     }
 
     /**
-     * Сохраняет заказ.
+     * Saves the order.
      * @param id
      */
     @Transactional

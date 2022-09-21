@@ -22,6 +22,9 @@ import webmarket.exceptions.ResourceNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Controller for working with products.
+ */
 @Data
 @RequiredArgsConstructor
 @RestController
@@ -29,12 +32,24 @@ import java.util.stream.Collectors;
 @Tag(name = "Продукты", description = "Методы работы с продуктами")
 public class ProductController {
 
+    /**
+     * Product service.
+     */
     private final ProductService productService;
+
+    /**
+     * Converter to the essence of products and vice versa.
+     */
     private final ProductConverter productConverter;
+
+    /**
+     * Product validator.
+     */
     private final ProductValidator productValidator;
 
     /**
-     * Запрос на получение страницы продуктов
+     * Request for a product page.
+     * http://localhost:5555/core/api/v1/products
      * @param page
      * @param minPrice
      * @param maxPrice
@@ -67,7 +82,8 @@ public class ProductController {
     }
 
     /**
-     * Запрос на получение продукта по id.
+     * Request to receive a product by id.
+     * http://localhost:5555/core/api/v1/products/{id}
      * @param id
      * @return
      */
@@ -87,7 +103,8 @@ public class ProductController {
     }
 
     /**
-     * Запрос на получение списка продуктов.
+     * Request for a list of products.
+     * http://localhost:5555/core/api/v1/products/all
      * @return
      */
     @GetMapping("/all")
@@ -107,7 +124,8 @@ public class ProductController {
     }
 
     /**
-     * Запрос на добавление нового продукта в БД продуктов.
+     * Request to add a new product to the product database.
+     * http://localhost:5555/core/api/v1/products
      * @param productDto
      * @return
      */
@@ -130,7 +148,8 @@ public class ProductController {
     }
 
     /**
-     * Запрос на удаление продукта в БД продуктов.
+     * Request to delete a product in the product database.
+     * http://localhost:5555/core/api/v1/products/{id}
      * @param id
      */
     @Hidden
@@ -140,7 +159,8 @@ public class ProductController {
     }
 
     /**
-     * Запрос на сохранение изменений у продукта в БД продуктов.
+     * Request to save changes to the product in the product database.
+     * http://localhost:5555/core/api/v1/products
      * @param productDto
      * @return
      */

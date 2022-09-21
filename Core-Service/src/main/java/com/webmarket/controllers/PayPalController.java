@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.io.IOException;
 
 /**
- * Контроллер для работы с платежной системой PayPal
+ * Controller for working with the PayPal payment system.
  */
 @Controller
 @RequestMapping("/api/v1/paypal")
@@ -27,22 +27,23 @@ import java.io.IOException;
 public class PayPalController {
 
     /**
-     * Клиент для запросов.
+     * Client for requests.
      */
     private final PayPalHttpClient payPalClient;
 
     /**
-     * Сервис заказов.
+     * Order service.
      */
     private final OrderService orderService;
 
     /**
-     * Сервис PayPal.
+     * PayPal service.
      */
     private final PayPalService payPalService;
 
     /**
-     * Запрос на создание заказа в платежной системе.
+     * Request to create an order in the payment system.
+     * http://localhost:5555/core/api/v1/create/{orderId}
      * @param orderId
      * @return
      * @throws IOException
@@ -57,7 +58,8 @@ public class PayPalController {
     }
 
     /**
-     * Запрос при подтверждении заказа платежной системой.
+     * Request for order confirmation by the payment system.
+     * http://localhost:5555/core/api/v1/capture/{payPalId}
      * @param payPalId
      * @return
      * @throws IOException

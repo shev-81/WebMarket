@@ -9,14 +9,14 @@ import webmarket.exceptions.AppError;
 import webmarket.exceptions.ResourceNotFoundException;
 
 /**
- * Глобальный перехватчик исключений. Оборачивает исключения в ResponseEntity<> с кодом ошибки.
+ * Global exception interceptor. Wraps exceptions in ResponseEntity<> with an error code.
  */
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
 
     /**
-     * Перехватчик исключения ResourceNotFoundException.
+     * Global exception interceptor. Wraps exceptions in ResponseEntity<> with an error code.
      * @param e
      * @return ResponseEntity
      */
@@ -27,7 +27,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Перехватчик исключения ValidationException.
+     * ValidationException exception interceptor.
      * @param e
      * @return ResponseEntity
      */
@@ -38,7 +38,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Перехватчик исключения CartServiceIntegrationException.
+     * Interceptor of the Cardservice IntegrationException exception.
      * @param e
      * @return ResponseEntity
      */

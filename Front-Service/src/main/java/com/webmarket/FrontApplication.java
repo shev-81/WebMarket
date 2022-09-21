@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Работает с фронтом всех разделов магазина, маршрутизирует перемещение
- * пользователя по его разделам (реализация на JS).
+ * Works with the front of all sections of the store, routes movement
+ * the user by its sections (implementation in JS).
  */
 @SpringBootApplication
 public class FrontApplication {

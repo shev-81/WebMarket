@@ -1,7 +1,7 @@
 package com.webmarket.enums;
 
 /**
- * Переменная для определения статуса заказа после оплаты в платежной системе.
+ * Variable for determining the order status after payment in the payment system.
  */
 public enum StatusCode {
     GENERATED, CANCELED, PAID

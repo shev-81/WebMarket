@@ -13,7 +13,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 /**
- * Энд поит Веб сервиса SOAP для получения категории по имени.
+ * The endpoint of the SOAP Web service for getting a category by name.
  */
 @Endpoint
 @RequiredArgsConstructor
