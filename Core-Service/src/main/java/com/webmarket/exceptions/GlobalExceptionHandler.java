@@ -16,7 +16,7 @@ import webmarket.exceptions.ResourceNotFoundException;
 public class GlobalExceptionHandler {
 
     /**
-     * Global exception interceptor. Wraps exceptions in ResponseEntity<> with an error code.
+     * Global exception interceptor. Wraps exceptions in ResponseEntity with an error code.
      * @param e
      * @return ResponseEntity
      */
