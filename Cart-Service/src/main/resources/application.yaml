@@ -2,6 +2,12 @@ server:
   port: 8166
   servlet:
     context-path: /web-market-cart
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
 utils:
   cart:
     prefix: SPRING_WEB_APP_

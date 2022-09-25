@@ -18,15 +18,9 @@ import java.util.Optional;
 public class ProductServiceIntegration {
 
     /**
-     * Client for requests to the Core service.
+     * Feign Client Product Service.
      */
-    @Autowired
-    @Qualifier("coreServiceWebClient")
-    private WebClient coreServiceWebClient;
-
-
-    @Value("${integrations.core-service.url}")
-    private String productServiceUrl;
+    private final ClientFeignProductService productService;
 
     /**
      * Sends a request to the Core service requests the product by its Id.
@@ -34,11 +28,7 @@ public class ProductServiceIntegration {
      * @return
      */
     public Optional <ProductDto> findById(Long id){
-        ProductDto productDto = coreServiceWebClient.get()
-                .uri(productServiceUrl + "/api/v1/products/" + id)
-                .retrieve()
-                .bodyToMono(ProductDto.class)
-                .block();
+        ProductDto productDto = productService.findById(id);
         return Optional.of(productDto);
     }
 }

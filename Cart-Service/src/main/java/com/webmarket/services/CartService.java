@@ -1,6 +1,5 @@
 package com.webmarket.services;
 
-import com.webmarket.integrations.AnalitServiceIntegration;
 import com.webmarket.integrations.ProductServiceIntegration;
 import com.webmarket.model.Cart;
 import lombok.Data;
@@ -32,11 +31,6 @@ public class CartService {
      * Proxy for contacting the grocery service.
      */
     private final ProductServiceIntegration productsService;
-
-    /**
-     * Proxy for accessing the Analytics service.
-     */
-    private final AnalitServiceIntegration analitService;
 
     /**
      * Template for working with Redis.
