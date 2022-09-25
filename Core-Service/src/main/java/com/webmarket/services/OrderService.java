@@ -3,7 +3,7 @@ package com.webmarket.services;
 import com.webmarket.entities.Order;
 import com.webmarket.entities.OrderItem;
 import com.webmarket.integrations.CartServiceIntegration;
-import com.webmarket.integrations.UserServiceIntegration;
+import com.webmarket.integrations.ClientFeignAuthService;
 import com.webmarket.repositories.OrdersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class OrderService {
     private final OrdersRepository ordersRepository;
     private final CartServiceIntegration cartServiceIntegration;
     private final ProductService productsService;
-    private final UserServiceIntegration userService;
+    private final ClientFeignAuthService userService;
 
     /**
      * Creates an order based on the received data.
