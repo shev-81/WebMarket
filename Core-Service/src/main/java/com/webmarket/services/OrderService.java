@@ -3,13 +3,11 @@ package com.webmarket.services;
 import com.webmarket.entities.Order;
 import com.webmarket.entities.OrderItem;
 import com.webmarket.integrations.CartServiceIntegration;
+import com.webmarket.integrations.UserServiceIntegration;
 import com.webmarket.repositories.OrdersRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
-import webmarket.auth.UserDto;
 import webmarket.cart.CartDto;
 import webmarket.core.OrderDetailsDto;
 import webmarket.exceptions.ResourceNotFoundException;
@@ -30,10 +28,7 @@ public class OrderService {
     private final OrdersRepository ordersRepository;
     private final CartServiceIntegration cartServiceIntegration;
     private final ProductService productsService;
-    private final RestTemplate authServiceTemplate;
-
-    @Value("${integrations.auth-service.url}")
-    private String authServiceUrl;
+    private final UserServiceIntegration userService;
 
     /**
      * Creates an order based on the received data.
@@ -45,7 +40,7 @@ public class OrderService {
         CartDto currentCart = cartServiceIntegration.getUserCart(userName);
         Order order = new Order();
         order.setUsername(userName);
-        order.setFio(authServiceTemplate.getForObject(authServiceUrl+ "/api/v1/user/" + userName, UserDto.class).getFio());
+        order.setFio(userService.findByName(userName).getFio());
         order.setPostalCode(orderDetailsDto.getPostalcode());
         order.setAdminAreaTwoTown(orderDetailsDto.getAdminAreaTwoTown());
         order.setAddressLineOneStreet(orderDetailsDto.getAddressLineOneStreet());
