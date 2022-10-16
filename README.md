@@ -104,10 +104,54 @@
 Дальнейший шаг это оформление заказа. И после его создания данные из корзины будут перенесены в созданный заказ (`MS CartService` -> передаст данные в `MS CoreService`).
 
 ## 4. `Core Service (Сервис Ядро магазина)`
-Основной программный модуль магазина содержит логику работы с товарами, категориями, заказами пользователей и взаимодействием с платежной системой PayPal. 
-В сервисе настроена интеграция с корзиной пользователя `Cart Service`, а так же с платежной системой PayPal. В сервисе реализованн SOAP API для получения
-списка товаров и списка категорий товаров. Взаимодействие с `Cart Service` налаженно через через Web Client. Данные о товарах и заказах хранятся в 
-БД Postgres.
+
+Это основной программный модуль магазина - содержит логику работы с товарами, категориями, заказами пользователей и взаимодействием с платежной системой `PayPal`. 
+
+Сервис интегрирован с корзиной пользователя `Cart Service`, `Auth Service`, а так же с платежной системой `PayPal`. Основная задача данного сервиса - по запросам с фронта предоставить информацию из БД о продуктах, категориях продуктов и заказах пользователя.
+
+- Работа с БД `PostgreSQL` реализованна через `Hibernate ORM`, с использованием `Data JPA`. 
+- Сервис содержит весь набор контроллеров для взаимодействия с каталогом продуктов и заказами пользователя.
+
+В сервисе реализованн `SOAP API` для получения списка товаров и списка категорий товаров. Взаимодействие с `Cart Service` налаженно через через `Web Client`. Данные о товарах и заказах хранятся в БД `Postgres`.
+
+Хотелось бы так же упоминуть об обработке ошибок возникаемых при работе сервиса. Так как сервис по сути является центральным хабом получения информации для фронта и может взаимодействовать с другими микросервисами системы то при получении ошибки из другого микросервиса он пробрасывает ощибки по цепочке далее. Вариант настроенного `WebClient` на соединение с `CartService` приведен ниже.
+
+    public CartDto getUserCart(String username) {
+            CartDto cart = cartServiceWebClient.get()
+                    .uri("/api/v1/cart/0")
+                    .header("username", username)
+                    .retrieve()
+                    .onStatus(HttpStatus::is4xxClientError, clientResponse -> Mono.error(new CartServiceIntegrationException("An incorrect request to the shopping cart service was made")))
+                    .onStatus(HttpStatus::is5xxServerError, clientResponse -> Mono.error(new CartServiceIntegrationException("The shopping cart service is broken")))
+                    .bodyToMono(CartDto.class)
+                    .block();
+            return cart;
+        }
+
+Тут в зависимости от кода вернувшейся ошибки из `CartService` (в данном случае ловятся все `4хх` и `5хх` ошибки), будет создан ответ для фронта и фронт поймав его покажет ошибку пользователю. Пример ниже.
+
+     $scope.checkOut = function () {
+             $http({
+                 url: 'http://localhost:5555/core/api/v1/orders',
+                 method: 'POST',
+                 data: $scope.orderDetails
+             }).then(function successCallback(response) {
+                 $scope.loadCart();
+                 $scope.orderDetails = null
+             }, function errorCallback(response) {
+                 console.log("Сервис лежит");
+                 let exceptionObj = response.data.message;
+                 alert("Ошибка " + exceptionObj);
+             });
+         };
+
+И конечно же в проекте используется глобальный перехватчик исключений `GlobalExceptionHandler`, который перехватывает необработанные исключения и обрабатывает их в соответствии с логикой или пробрасывает на фронт используя ResponseEntity класс. Пример перхватчика ниже.
+
+     @ExceptionHandler
+         public ResponseEntity<AppError> catchResourceNotFoundException(ResourceNotFoundException e) {
+             log.error(e.getMessage(), e);
+             return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(), e.getMessage()), HttpStatus.NOT_FOUND);
+         }
 
 ## 5. `Analityc Service (Сервис Аналитики)`
 Получает из брокера сообщений `Kafka` объекты от `Core Service` и сохраняет их в `БД MySQL`. Здесь нужно сказать, что это объекты содержащие данные о добавляемом товаре в корзину покупателя содержат в себе названия продуктов. При загрузке стартовой страницы магазина,  данные показываются в виде списка востребованных товаров, подгруженного из БД сервиса аналитики.
