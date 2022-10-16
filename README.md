@@ -111,12 +111,13 @@
 
 - Работа с БД `PostgreSQL` реализованна через `Hibernate ORM`, с использованием `Data JPA`. 
 - Сервис содержит весь набор контроллеров для взаимодействия с каталогом продуктов и заказами пользователя.
+- Интегрирован с Cart Service через `Apache Kafka`. 
 
 В сервисе реализованн `SOAP API` для получения списка товаров и списка категорий товаров. Взаимодействие с `Cart Service` налаженно через через `Web Client`. Данные о товарах и заказах хранятся в БД `Postgres`.
 
 Хотелось бы так же упоминуть об обработке ошибок возникаемых при работе сервиса. Так как сервис по сути является центральным хабом получения информации для фронта и может взаимодействовать с другими микросервисами системы то при получении ошибки из другого микросервиса он пробрасывает ощибки по цепочке далее. Вариант настроенного `WebClient` на соединение с `CartService` приведен ниже.
 
-    public CartDto getUserCart(String username) {
+        public CartDto getUserCart(String username) {
             CartDto cart = cartServiceWebClient.get()
                     .uri("/api/v1/cart/0")
                     .header("username", username)
@@ -130,7 +131,7 @@
 
 Тут в зависимости от кода вернувшейся ошибки из `CartService` (в данном случае ловятся все `4хх` и `5хх` ошибки), будет создан ответ для фронта и фронт поймав его покажет ошибку пользователю. Пример ниже.
 
-     $scope.checkOut = function () {
+        $scope.checkOut = function () {
              $http({
                  url: 'http://localhost:5555/core/api/v1/orders',
                  method: 'POST',
@@ -147,7 +148,7 @@
 
 И конечно же в проекте используется глобальный перехватчик исключений `GlobalExceptionHandler`, который перехватывает необработанные исключения и обрабатывает их в соответствии с логикой или пробрасывает на фронт используя ResponseEntity класс. Пример перхватчика ниже.
 
-     @ExceptionHandler
+         @ExceptionHandler
          public ResponseEntity<AppError> catchResourceNotFoundException(ResourceNotFoundException e) {
              log.error(e.getMessage(), e);
              return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(), e.getMessage()), HttpStatus.NOT_FOUND);
