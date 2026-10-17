@@ -14,7 +14,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @SpringBootApplication
 @EnableFeignClients
-@PropertySource("secret.properties")
+@PropertySource("classpath:secret.properties")
 public class CoreServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CoreServiceApplication.class, args);
