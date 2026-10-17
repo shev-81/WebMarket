@@ -73,6 +73,8 @@ public class AnalitService {
      */
     @Scheduled(fixedDelay = 10000)
     public void requestData(){
-        listProduct = analitRepository.findLastTen().stream().map(s-> (new StatisticDto(s.getNameProducts(), s.getCountVisits()))).collect(Collectors.toList());
+        listProduct = analitRepository.findLastTen().stream()
+                .map(s-> (new StatisticDto(s.getNameProducts(), s.getCountVisits())))
+                .collect(Collectors.toList());
     }
 }

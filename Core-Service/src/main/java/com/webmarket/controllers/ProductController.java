@@ -77,8 +77,7 @@ public class ProductController {
         if (page < 1) {
             page = 1;
         }
-        return productService.findAll(minPrice, maxPrice, namePart, nameCategory, page).map(p -> productConverter.entityToDto(p)
-        );
+        return productService.findAll(minPrice, maxPrice, namePart, nameCategory, page).map(productConverter::entityToDto);
     }
 
     /**

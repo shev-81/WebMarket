@@ -52,7 +52,7 @@ public class AnalitController {
      * through the analytics service in your repository.
      * @param product
      */
-    @KafkaListener(topics = "ProductAnalit")
+    @KafkaListener(topics = "ProductAnalit", concurrency = "100")
     public void msgListener(ProductDto product){
         analitService.register(product);
     }

@@ -1,4 +1,4 @@
-package com.webmarket.exceptions;
+package com.webmarket.repositories.exceptions;
 
 
 import lombok.extern.slf4j.Slf4j;

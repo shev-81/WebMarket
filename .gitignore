@@ -9,3 +9,6 @@ HELP.md
 *.iws
 *.iml
 *.ipr
+**/.codewhale/*
+!**/.codewhale/constitution.json
+.deepseek/
