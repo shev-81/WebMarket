@@ -8,9 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.web.bind.annotation.*;
-import webmarket.core.ProductDto;
 import webmarket.analitic.StatisticDto;
 
 import java.util.List;
@@ -47,13 +45,4 @@ public class AnalitController {
         return listStatistic;
     }
 
-    /**
-     * The listener takes the incoming product object from the queue and saves it
-     * through the analytics service in your repository.
-     * @param product
-     */
-    @KafkaListener(topics = "ProductAnalit", concurrency = "100")
-    public void msgListener(ProductDto product){
-        analitService.register(product);
-    }
 }
